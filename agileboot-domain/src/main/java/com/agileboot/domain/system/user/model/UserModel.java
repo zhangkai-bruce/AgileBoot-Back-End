@@ -13,14 +13,15 @@ import com.agileboot.domain.system.user.command.AddUserCommand;
 import com.agileboot.domain.system.user.command.UpdateProfileCommand;
 import com.agileboot.domain.system.user.command.UpdateUserCommand;
 import com.agileboot.domain.system.user.command.UpdateUserPasswordCommand;
-import com.agileboot.infrastructure.user.AuthenticationUtils;
-import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.agileboot.domain.system.user.db.SysUserEntity;
 import com.agileboot.domain.system.user.db.SysUserService;
-import java.util.Objects;
+import com.agileboot.infrastructure.user.AuthenticationUtils;
+import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.util.Objects;
 
 /**
  * @author valarchie
@@ -39,7 +40,7 @@ public class UserModel extends SysUserEntity {
     private RoleModelFactory roleModelFactory;
 
     public UserModel(SysUserEntity entity, SysUserService userService, PostModelFactory postModelFactory,
-        DeptModelFactory deptModelFactory, RoleModelFactory roleModelFactory) {
+                     DeptModelFactory deptModelFactory, RoleModelFactory roleModelFactory) {
         this(userService, postModelFactory, deptModelFactory, roleModelFactory);
 
         if (entity != null) {
@@ -48,7 +49,7 @@ public class UserModel extends SysUserEntity {
     }
 
     public UserModel(SysUserService userService, PostModelFactory postModelFactory,
-        DeptModelFactory deptModelFactory, RoleModelFactory roleModelFactory) {
+                     DeptModelFactory deptModelFactory, RoleModelFactory roleModelFactory) {
         this.userService = userService;
         this.postModelFactory = postModelFactory;
         this.deptModelFactory = deptModelFactory;
@@ -86,7 +87,7 @@ public class UserModel extends SysUserEntity {
 
     public void checkPhoneNumberIsUnique() {
         if (StrUtil.isNotEmpty(getPhoneNumber()) && userService.isPhoneDuplicated(getPhoneNumber(),
-            getUserId())) {
+                getUserId())) {
             throw new ApiException(ErrorCode.Business.USER_PHONE_NUMBER_IS_NOT_UNIQUE);
         }
     }
@@ -116,7 +117,7 @@ public class UserModel extends SysUserEntity {
 
     public void checkCanBeDelete(SystemLoginUser loginUser) {
         if (Objects.equals(getUserId(), loginUser.getUserId())
-            || this.getIsAdmin()) {
+                || this.getIsAdmin()) {
             throw new ApiException(ErrorCode.Business.USER_CURRENT_USER_CAN_NOT_BE_DELETE);
         }
     }
@@ -143,7 +144,7 @@ public class UserModel extends SysUserEntity {
             throw new ApiException(Business.USER_ADMIN_CAN_NOT_BE_MODIFY);
         }
 
-       return super.updateById();
+        return super.updateById();
     }
 
 }

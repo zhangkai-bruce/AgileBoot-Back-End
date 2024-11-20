@@ -3,9 +3,6 @@ package com.agileboot.domain.system.monitor.dto;
 import cn.hutool.core.net.NetUtil;
 import cn.hutool.core.util.NumberUtil;
 import com.agileboot.common.constant.Constants;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Properties;
 import lombok.Data;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.CentralProcessor.TickType;
@@ -15,6 +12,10 @@ import oshi.software.os.FileSystem;
 import oshi.software.os.OSFileStore;
 import oshi.software.os.OperatingSystem;
 import oshi.util.Util;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * 服务器相关信息
@@ -143,7 +144,7 @@ public class ServerInfo {
             diskInfo.setTotal(convertFileSize(total));
             diskInfo.setFree(convertFileSize(free));
             diskInfo.setUsed(convertFileSize(used));
-            if (total != 0){
+            if (total != 0) {
                 diskInfo.setUsage(NumberUtil.div(used * 100, total, 4));
             } else {
                 //Windows下如果有光驱（可能是虚拟光驱），total为0，不能做除数

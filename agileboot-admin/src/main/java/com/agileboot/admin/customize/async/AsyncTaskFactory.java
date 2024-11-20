@@ -3,12 +3,12 @@ package com.agileboot.admin.customize.async;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.extra.spring.SpringUtil;
+import com.agileboot.common.enums.common.LoginStatusEnum;
 import com.agileboot.common.utils.ServletHolderUtil;
 import com.agileboot.common.utils.ip.IpRegionUtil;
-import com.agileboot.common.enums.common.LoginStatusEnum;
 import com.agileboot.domain.system.log.db.SysLoginInfoEntity;
-import com.agileboot.domain.system.log.db.SysOperationLogEntity;
 import com.agileboot.domain.system.log.db.SysLoginInfoService;
+import com.agileboot.domain.system.log.db.SysOperationLogEntity;
 import com.agileboot.domain.system.log.db.SysOperationLogService;
 import eu.bitwalker.useragentutils.UserAgent;
 import lombok.extern.slf4j.Slf4j;
@@ -35,7 +35,7 @@ public class AsyncTaskFactory {
     public static Runnable loginInfoTask(final String username, final LoginStatusEnum loginStatusEnum, final String message) {
         // 优化一下这个类
         final UserAgent userAgent = UserAgent.parseUserAgentString(
-            ServletHolderUtil.getRequest().getHeader("User-Agent"));
+                ServletHolderUtil.getRequest().getHeader("User-Agent"));
         // 获取客户端浏览器
         final String browser = userAgent.getBrowser() != null ? userAgent.getBrowser().getName() : "";
         final String ip = ServletUtil.getClientIP(ServletHolderUtil.getRequest());
@@ -44,7 +44,7 @@ public class AsyncTaskFactory {
         final String os = userAgent.getOperatingSystem() != null ? userAgent.getOperatingSystem().getName() : "";
 
         log.info("ip: {}, address: {}, username: {}, loginStatusEnum: {}, message: {}", ip, address, username,
-            loginStatusEnum, message);
+                loginStatusEnum, message);
         return () -> {
             // 封装对象
             SysLoginInfoEntity loginInfo = new SysLoginInfoEntity();

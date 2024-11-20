@@ -3,13 +3,13 @@ package com.agileboot.admin.customize.service.permission;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.agileboot.infrastructure.user.AuthenticationUtils;
-import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.agileboot.infrastructure.user.web.RoleInfo;
-import java.util.Set;
+import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 /**
- *
  * @author valarchie
  */
 @Service("permission")
@@ -38,7 +38,7 @@ public class MenuPermissionService {
      * 判断是否包含权限
      *
      * @param permissions 权限列表
-     * @param permission 权限字符串
+     * @param permission  权限字符串
      * @return 用户是否具备某权限
      */
     private boolean has(Set<String> permissions, String permission) {

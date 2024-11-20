@@ -2,13 +2,15 @@ package com.agileboot.domain.system.menu.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * 路由显示信息
  * 必须加上@JsonInclude(Include.NON_NULL)的注解  否则传null值给Vue动态路由渲染时会出错
+ *
  * @author valarchie
  */
 @Data
@@ -30,14 +32,14 @@ public class MetaDTO {
     // 需要内嵌的iframe链接地址
     private String frameSrc;
     /**
-     *  是否是内部页面   使用frameSrc来嵌入页面时，当isFrameSrcInternal=true的时候, 前端需要做特殊处理
-     *  比如链接是 /druid/login.html
-     *  前端需要处理成 http://localhost:8080/druid/login.html
-    */
+     * 是否是内部页面   使用frameSrc来嵌入页面时，当isFrameSrcInternal=true的时候, 前端需要做特殊处理
+     * 比如链接是 /druid/login.html
+     * 前端需要处理成 http://localhost:8080/druid/login.html
+     */
     private Boolean isFrameSrcInternal;
 
     /**
-     *  菜单排序，值越高排的越后（只针对顶级路由）
+     * 菜单排序，值越高排的越后（只针对顶级路由）
      */
     private Integer rank;
 

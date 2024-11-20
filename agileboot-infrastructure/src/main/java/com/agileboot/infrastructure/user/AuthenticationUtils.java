@@ -16,7 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  */
 public class AuthenticationUtils {
 
-    private AuthenticationUtils() {}
+    private AuthenticationUtils() {
+    }
 
     /**
      * 用户ID
@@ -72,7 +73,7 @@ public class AuthenticationUtils {
     /**
      * 判断密码是否相同
      *
-     * @param rawPassword 真实密码
+     * @param rawPassword     真实密码
      * @param encodedPassword 加密后字符
      * @return 结果
      */

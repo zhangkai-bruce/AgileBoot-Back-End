@@ -1,27 +1,28 @@
 package com.agileboot.integrationTest.db;
 
-import com.agileboot.domain.system.role.query.AllocatedRoleQuery;
-import com.agileboot.domain.system.role.query.UnallocatedRoleQuery;
-import com.agileboot.domain.system.user.query.SearchUserQuery;
-import com.agileboot.integrationTest.IntegrationTestApplication;
 import com.agileboot.domain.system.menu.db.SysMenuEntity;
+import com.agileboot.domain.system.menu.db.SysMenuService;
 import com.agileboot.domain.system.post.db.SysPostEntity;
 import com.agileboot.domain.system.role.db.SysRoleEntity;
-import com.agileboot.domain.system.user.db.SysUserEntity;
+import com.agileboot.domain.system.role.query.AllocatedRoleQuery;
+import com.agileboot.domain.system.role.query.UnallocatedRoleQuery;
 import com.agileboot.domain.system.user.db.SearchUserDO;
-import com.agileboot.domain.system.menu.db.SysMenuService;
+import com.agileboot.domain.system.user.db.SysUserEntity;
 import com.agileboot.domain.system.user.db.SysUserService;
+import com.agileboot.domain.system.user.query.SearchUserQuery;
+import com.agileboot.integrationTest.IntegrationTestApplication;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.annotation.Resource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @SpringBootTest(classes = IntegrationTestApplication.class)
 @RunWith(SpringRunner.class)

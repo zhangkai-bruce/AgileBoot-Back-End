@@ -4,6 +4,7 @@ import com.agileboot.common.enums.BasicEnum;
 
 /**
  * Http Method
+ *
  * @author valarchie
  */
 public enum RequestMethodEnum implements BasicEnum<Integer> {

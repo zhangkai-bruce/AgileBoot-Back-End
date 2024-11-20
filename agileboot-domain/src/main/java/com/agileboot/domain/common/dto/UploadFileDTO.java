@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UploadFileDTO {
 
+    private String imgUrl;
+
     public UploadFileDTO(String imgUrl) {
         this.imgUrl = imgUrl;
     }
-
-    private String imgUrl;
 
 }

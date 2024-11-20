@@ -5,13 +5,13 @@ import cn.hutool.core.util.EnumUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.json.JSONUtil;
-import com.agileboot.common.utils.ServletHolderUtil;
-import com.agileboot.infrastructure.user.AuthenticationUtils;
-import com.agileboot.infrastructure.user.web.SystemLoginUser;
+import com.agileboot.common.enums.BasicEnumUtil;
 import com.agileboot.common.enums.common.OperationStatusEnum;
 import com.agileboot.common.enums.common.RequestMethodEnum;
-import com.agileboot.common.enums.BasicEnumUtil;
+import com.agileboot.common.utils.ServletHolderUtil;
 import com.agileboot.domain.system.log.db.SysOperationLogEntity;
+import com.agileboot.infrastructure.user.AuthenticationUtils;
+import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.springframework.validation.BindingResult;
@@ -98,7 +98,7 @@ public class OperationLogModel extends SysOperationLogEntity {
      */
     private void recordRequestData(JoinPoint joinPoint) {
         RequestMethodEnum requestMethodEnum = BasicEnumUtil.fromValue(RequestMethodEnum.class,
-            this.getRequestMethod());
+                this.getRequestMethod());
 
         if (requestMethodEnum == RequestMethodEnum.GET || requestMethodEnum == RequestMethodEnum.POST) {
             String params = argsArrayToString(joinPoint.getArgs());
@@ -154,7 +154,7 @@ public class OperationLogModel extends SysOperationLogEntity {
             }
         }
         return o instanceof MultipartFile || o instanceof HttpServletRequest || o instanceof HttpServletResponse
-            || o instanceof BindingResult;
+                || o instanceof BindingResult;
     }
 
 }

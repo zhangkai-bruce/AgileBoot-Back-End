@@ -1,11 +1,12 @@
 package com.agileboot.common.enums.common;
 
+import com.agileboot.common.enums.DictionaryEnum;
 import com.agileboot.common.enums.dictionary.CssTag;
 import com.agileboot.common.enums.dictionary.Dictionary;
-import com.agileboot.common.enums.DictionaryEnum;
 
 /**
  * 对应sys_user的status字段
+ *
  * @author valarchie
  */
 @Dictionary(name = "sysUser.status")

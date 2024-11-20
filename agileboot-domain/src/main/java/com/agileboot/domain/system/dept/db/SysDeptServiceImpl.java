@@ -26,8 +26,8 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDeptEntity
     public boolean isDeptNameDuplicated(String deptName, Long deptId, Long parentId) {
         QueryWrapper<SysDeptEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("dept_name", deptName)
-            .ne(deptId != null, "dept_id", deptId)
-            .eq(parentId != null, "parent_id", parentId);
+                .ne(deptId != null, "dept_id", deptId)
+                .eq(parentId != null, "parent_id", parentId);
 
         return this.baseMapper.exists(queryWrapper);
     }
@@ -37,9 +37,9 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDeptEntity
     public boolean hasChildrenDept(Long deptId, Boolean enabled) {
         QueryWrapper<SysDeptEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(enabled != null, "status", 1)
-            .and(o -> o.eq("parent_id", deptId).or()
-                .apply("FIND_IN_SET (" + deptId + " , ancestors)")
-            );
+                .and(o -> o.eq("parent_id", deptId).or()
+                        .apply("FIND_IN_SET (" + deptId + " , ancestors)")
+                );
         return this.baseMapper.exists(queryWrapper);
     }
 

@@ -4,20 +4,22 @@ import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeUtil;
 import com.agileboot.domain.system.dept.command.AddDeptCommand;
 import com.agileboot.domain.system.dept.command.UpdateDeptCommand;
+import com.agileboot.domain.system.dept.db.SysDeptEntity;
+import com.agileboot.domain.system.dept.db.SysDeptService;
 import com.agileboot.domain.system.dept.dto.DeptDTO;
 import com.agileboot.domain.system.dept.model.DeptModel;
 import com.agileboot.domain.system.dept.model.DeptModelFactory;
 import com.agileboot.domain.system.dept.query.DeptQuery;
-import com.agileboot.domain.system.dept.db.SysDeptEntity;
-import com.agileboot.domain.system.dept.db.SysDeptService;
 import com.agileboot.domain.system.role.db.SysRoleService;
-import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * 部门服务
+ *
  * @author valarchie
  */
 @Service
@@ -82,7 +84,6 @@ public class DeptApplicationService {
 
         deptModel.deleteById();
     }
-
 
 
 }

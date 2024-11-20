@@ -1,15 +1,15 @@
 package com.agileboot.domain.system.menu.model;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode.Business;
 import com.agileboot.domain.system.menu.db.SysMenuService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class MenuModelTest {
 
@@ -24,8 +24,8 @@ class MenuModelTest {
         MenuModel menuModel = menuModelFactory.create();
         menuModel.setMenuName("menu 1");
         when(
-            menuService.isMenuNameDuplicated(ArgumentMatchers.any(), ArgumentMatchers.any(),
-                ArgumentMatchers.any())).thenReturn(true);
+                menuService.isMenuNameDuplicated(ArgumentMatchers.any(), ArgumentMatchers.any(),
+                        ArgumentMatchers.any())).thenReturn(true);
 
         ApiException exception = assertThrows(ApiException.class, menuModel::checkMenuNameUnique);
         Assertions.assertEquals(Business.MENU_NAME_IS_NOT_UNIQUE, exception.getErrorCode());
@@ -41,7 +41,7 @@ class MenuModelTest {
 //        isExternalWithHttpPrefix.setIsExternal(true);
         isExternalWithHttpPrefix.setPath("http://www.baidu.com");
 
-        Assertions.assertDoesNotThrow(()->{
+        Assertions.assertDoesNotThrow(() -> {
             notExternalButWithoutHttpPrefix.checkExternalLink();
             isExternalWithHttpPrefix.checkExternalLink();
         });
@@ -57,7 +57,6 @@ class MenuModelTest {
 
         Assertions.assertEquals(Business.MENU_EXTERNAL_LINK_MUST_BE_HTTP, exception.getErrorCode());
     }
-
 
 
     @Test

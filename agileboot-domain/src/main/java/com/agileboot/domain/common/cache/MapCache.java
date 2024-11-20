@@ -3,18 +3,9 @@ package com.agileboot.domain.common.cache;
 import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.ArrayUtil;
-import com.agileboot.common.enums.common.BusinessTypeEnum;
-import com.agileboot.common.enums.common.GenderEnum;
-import com.agileboot.common.enums.common.LoginStatusEnum;
-import com.agileboot.common.enums.common.NoticeStatusEnum;
-import com.agileboot.common.enums.common.NoticeTypeEnum;
-import com.agileboot.common.enums.common.OperationStatusEnum;
-import com.agileboot.common.enums.common.StatusEnum;
-import com.agileboot.common.enums.common.UserStatusEnum;
-import com.agileboot.common.enums.common.VisibleStatusEnum;
-import com.agileboot.common.enums.common.YesOrNoEnum;
-import com.agileboot.common.enums.dictionary.Dictionary;
 import com.agileboot.common.enums.DictionaryEnum;
+import com.agileboot.common.enums.common.*;
+import com.agileboot.common.enums.dictionary.Dictionary;
 import com.agileboot.common.enums.dictionary.DictionaryData;
 
 import java.util.Arrays;
@@ -32,11 +23,11 @@ public class MapCache {
 
     private static final Map<String, List<DictionaryData>> DICTIONARY_CACHE = MapUtil.newHashMap(128);
 
-    private MapCache() {
-    }
-
     static {
         initDictionaryCache();
+    }
+
+    private MapCache() {
     }
 
     private static void initDictionaryCache() {
@@ -73,7 +64,7 @@ public class MapCache {
 
     @SuppressWarnings("rawtypes")
     private static List<DictionaryData> arrayToList(DictionaryEnum[] dictionaryEnums) {
-        if(ArrayUtil.isEmpty(dictionaryEnums)) {
+        if (ArrayUtil.isEmpty(dictionaryEnums)) {
             return ListUtil.empty();
         }
         return Arrays.stream(dictionaryEnums).map(DictionaryData::new).collect(Collectors.toList());

@@ -1,13 +1,14 @@
 package com.agileboot.common.enums.common;
 
+import com.agileboot.common.enums.DictionaryEnum;
 import com.agileboot.common.enums.dictionary.CssTag;
 import com.agileboot.common.enums.dictionary.Dictionary;
-import com.agileboot.common.enums.DictionaryEnum;
 
 /**
  * 对应sys_notice的 notice_type字段
  * 名称一般由对应的表名.字段构成
  * 全局的话使用common作为表名
+ *
  * @author valarchie
  */
 @Dictionary(name = "sysNotice.noticeType")

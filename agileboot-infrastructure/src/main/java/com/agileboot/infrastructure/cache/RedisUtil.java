@@ -1,16 +1,17 @@
 package com.agileboot.infrastructure.cache;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.BoundSetOperations;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * spring redis 工具类
@@ -27,7 +28,7 @@ public class RedisUtil {
     /**
      * 缓存基本的对象，Integer、String、实体类等
      *
-     * @param key 缓存的键值
+     * @param key   缓存的键值
      * @param value 缓存的值
      */
     public <T> void setCacheObject(final String key, final T value) {
@@ -37,9 +38,9 @@ public class RedisUtil {
     /**
      * 缓存基本的对象，Integer、String、实体类等
      *
-     * @param key 缓存的键值
-     * @param value 缓存的值
-     * @param timeout 时间
+     * @param key      缓存的键值
+     * @param value    缓存的值
+     * @param timeout  时间
      * @param timeUnit 时间颗粒度
      */
     public <T> void setCacheObject(final String key, final T value, final Integer timeout, final TimeUnit timeUnit) {
@@ -49,7 +50,7 @@ public class RedisUtil {
     /**
      * 设置有效时间
      *
-     * @param key Redis键
+     * @param key     Redis键
      * @param timeout 超时时间
      * @return true=设置成功；false=设置失败
      */
@@ -60,9 +61,9 @@ public class RedisUtil {
     /**
      * 设置有效时间
      *
-     * @param key Redis键
+     * @param key     Redis键
      * @param timeout 超时时间
-     * @param unit 时间单位
+     * @param unit    时间单位
      * @return true=设置成功；false=设置失败
      */
     public Boolean expire(final String key, final long timeout, final TimeUnit unit) {
@@ -99,7 +100,7 @@ public class RedisUtil {
     /**
      * 缓存List数据
      *
-     * @param key 缓存的键值
+     * @param key      缓存的键值
      * @param dataList 待缓存的List数据
      * @return 缓存的对象
      */
@@ -121,7 +122,7 @@ public class RedisUtil {
     /**
      * 缓存Set
      *
-     * @param key 缓存键值
+     * @param key     缓存键值
      * @param dataSet 缓存的数据
      * @return 缓存数据的对象
      */
@@ -159,8 +160,8 @@ public class RedisUtil {
     /**
      * 往Hash中存入数据
      *
-     * @param key Redis键
-     * @param hKey Hash键
+     * @param key   Redis键
+     * @param hKey  Hash键
      * @param value 值
      */
     public <T> void setCacheMapValue(final String key, final String hKey, final T value) {
@@ -170,7 +171,7 @@ public class RedisUtil {
     /**
      * 获取Hash中的数据
      *
-     * @param key Redis键
+     * @param key  Redis键
      * @param hKey Hash键
      * @return Hash中的对象
      */
@@ -190,7 +191,7 @@ public class RedisUtil {
     /**
      * 获取多个Hash中的数据
      *
-     * @param key Redis键
+     * @param key   Redis键
      * @param hKeys Hash键集合
      * @return Hash对象集合
      */

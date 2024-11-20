@@ -1,8 +1,8 @@
 package com.agileboot.domain.system.monitor.dto;
 
 import com.agileboot.domain.common.cache.CacheCenter;
-import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.agileboot.domain.system.dept.db.SysDeptEntity;
+import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import lombok.Data;
 
 /**

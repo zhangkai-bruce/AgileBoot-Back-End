@@ -4,18 +4,15 @@ import cn.hutool.core.util.StrUtil;
 import com.agileboot.infrastructure.user.AuthenticationUtils;
 import com.agileboot.infrastructure.user.app.AppLoginUser;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.lang.reflect.Method;
 import lombok.extern.slf4j.Slf4j;
+
+import java.lang.annotation.*;
+import java.lang.reflect.Method;
 
 /**
  * 自定义注解防止表单重复提交
  * 仅生效于有RequestBody注解的参数  因为使用RequestBodyAdvice来实现
+ *
  * @author valarchie
  */
 @Inherited
@@ -55,10 +52,10 @@ public @interface Unrepeatable {
                 }
 
                 return StrUtil.format(RESUBMIT_REDIS_KEY,
-                    this.name(),
-                    method.getDeclaringClass().getName(),
-                    method.getName(),
-                    username);
+                        this.name(),
+                        method.getDeclaringClass().getName(),
+                        method.getName(),
+                        username);
             }
         },
         /**
@@ -78,10 +75,10 @@ public @interface Unrepeatable {
                 }
 
                 return StrUtil.format(RESUBMIT_REDIS_KEY,
-                    this.name(),
-                    method.getDeclaringClass().getName(),
-                    method.getName(),
-                    username);
+                        this.name(),
+                        method.getDeclaringClass().getName(),
+                        method.getName(),
+                        username);
             }
         };
 

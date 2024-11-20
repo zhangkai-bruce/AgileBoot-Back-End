@@ -1,9 +1,5 @@
 package com.agileboot.domain.system.role.model;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import cn.hutool.core.collection.ListUtil;
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode.Business;
@@ -12,16 +8,16 @@ import com.agileboot.domain.system.role.db.SysRoleService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 class RoleModelTest {
 
-    private final SysRoleService roleService = mock(SysRoleService.class);
-
-    private final SysRoleMenuService roleMenuService = mock(SysRoleMenuService.class);
-
-    private final RoleModelFactory roleModelFactory = new RoleModelFactory(roleService, roleMenuService);
-
     private static final long ROLE_ID = 1L;
-
+    private final SysRoleService roleService = mock(SysRoleService.class);
+    private final SysRoleMenuService roleMenuService = mock(SysRoleMenuService.class);
+    private final RoleModelFactory roleModelFactory = new RoleModelFactory(roleService, roleMenuService);
 
     @Test
     void testCheckRoleNameUnique() {
@@ -82,7 +78,7 @@ class RoleModelTest {
     @Test
     void testGenerateDeptIdSetWhenDuplicated() {
         RoleModel roleModel = roleModelFactory.create();
-        roleModel.setDeptIds(ListUtil.of(1L,1L,2L,3L));
+        roleModel.setDeptIds(ListUtil.of(1L, 1L, 2L, 3L));
 
         ApiException exception = assertThrows(ApiException.class, roleModel::generateDeptIdSet);
 
@@ -92,13 +88,11 @@ class RoleModelTest {
     @Test
     void testGenerateDeptIdSetWhenSuccessful() {
         RoleModel roleModel = roleModelFactory.create();
-        roleModel.setDeptIds(ListUtil.of(1L,2L,3L));
+        roleModel.setDeptIds(ListUtil.of(1L, 2L, 3L));
         roleModel.generateDeptIdSet();
 
         Assertions.assertEquals("1,2,3", roleModel.getDeptIdSet());
     }
-
-
 
 
 }

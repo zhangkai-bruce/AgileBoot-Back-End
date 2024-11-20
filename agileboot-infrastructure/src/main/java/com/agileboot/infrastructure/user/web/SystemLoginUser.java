@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * 登录用户身份权限
+ *
  * @author valarchie
  */
 @Data
@@ -27,7 +28,7 @@ public class SystemLoginUser extends BaseLoginUser {
 
 
     public SystemLoginUser(Long userId, Boolean isAdmin, String username, String password, RoleInfo roleInfo,
-        Long deptId) {
+                           Long deptId) {
         this.userId = userId;
         this.isAdmin = isAdmin;
         this.username = username;

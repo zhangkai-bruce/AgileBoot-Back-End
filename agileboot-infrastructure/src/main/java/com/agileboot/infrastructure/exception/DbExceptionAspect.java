@@ -3,7 +3,6 @@ package com.agileboot.infrastructure.exception;
 import cn.hutool.core.map.MapUtil;
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode.Internal;
-import java.sql.SQLException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -11,6 +10,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+
+import java.sql.SQLException;
 
 
 /**

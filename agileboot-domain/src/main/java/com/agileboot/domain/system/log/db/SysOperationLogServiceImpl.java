@@ -13,6 +13,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysOperationLogServiceImpl extends ServiceImpl<SysOperationLogMapper, SysOperationLogEntity> implements
-    SysOperationLogService {
+        SysOperationLogService {
 
 }

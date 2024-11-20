@@ -1,7 +1,5 @@
 package com.agileboot.infrastructure.config;
 
-import java.util.ArrayList;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
@@ -15,8 +13,12 @@ import org.springframework.transaction.interceptor.RollbackRuleAttribute;
 import org.springframework.transaction.interceptor.RuleBasedTransactionAttribute;
 import org.springframework.transaction.interceptor.TransactionInterceptor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 全局事务管理器
+ *
  * @author valarchie
  */
 @Configuration
@@ -96,6 +98,7 @@ public class GlobalTransactionConfig {
 
     /**
      * 设置切面
+     *
      * @return Advisor
      */
     @Bean

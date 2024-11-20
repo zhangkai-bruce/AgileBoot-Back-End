@@ -45,9 +45,9 @@ class FileUploadUtilsTest {
         MultipartFile fileMock = Mockito.mock(MultipartFile.class);
 
         ApiException exceptionWithNullSubDir = Assertions.assertThrows(ApiException.class,
-            () -> FileUploadUtils.saveFileToLocal(fileMock, "", ""));
+                () -> FileUploadUtils.saveFileToLocal(fileMock, "", ""));
         ApiException exceptionWitEmptyFileName = Assertions.assertThrows(ApiException.class,
-            () -> FileUploadUtils.saveFileToLocal(fileMock, "", ""));
+                () -> FileUploadUtils.saveFileToLocal(fileMock, "", ""));
 
         Assertions.assertEquals(Internal.INVALID_PARAMETER, exceptionWithNullSubDir.getErrorCode());
         Assertions.assertEquals(Internal.INVALID_PARAMETER, exceptionWitEmptyFileName.getErrorCode());
@@ -57,12 +57,12 @@ class FileUploadUtilsTest {
     void testIsAllowedUploadWhenFileNameTooLong() {
         MultipartFile fileMock = Mockito.mock(MultipartFile.class);
         String longFileName = "this is a very very long sentence, this is a very very long sentence, "
-            + "this is a very very long sentence, this is a very very long sentence, ";
+                + "this is a very very long sentence, this is a very very long sentence, ";
 
         Mockito.when(fileMock.getOriginalFilename()).thenReturn(longFileName);
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-            () -> FileUploadUtils.isAllowedUpload(fileMock, null));
+                () -> FileUploadUtils.isAllowedUpload(fileMock, null));
         Assertions.assertEquals(Business.UPLOAD_FILE_NAME_EXCEED_MAX_LENGTH, exception.getErrorCode());
     }
 
@@ -73,7 +73,7 @@ class FileUploadUtilsTest {
         Mockito.when(fileMock.getSize()).thenReturn(FileUploadUtils.MAX_FILE_SIZE + 1);
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-            () -> FileUploadUtils.isAllowedUpload(fileMock, null));
+                () -> FileUploadUtils.isAllowedUpload(fileMock, null));
         Assertions.assertEquals(Business.UPLOAD_FILE_SIZE_EXCEED_MAX_SIZE, exception.getErrorCode());
     }
 

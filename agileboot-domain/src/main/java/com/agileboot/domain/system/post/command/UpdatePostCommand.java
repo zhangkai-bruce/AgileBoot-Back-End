@@ -1,9 +1,10 @@
 package com.agileboot.domain.system.post.command;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 /**
  * @author valarchie

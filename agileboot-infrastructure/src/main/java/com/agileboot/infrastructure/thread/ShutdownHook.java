@@ -1,8 +1,9 @@
 package com.agileboot.infrastructure.thread;
 
-import javax.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PreDestroy;
 
 /**
  * 确保应用退出时能关闭后台线程

@@ -7,7 +7,6 @@ import com.agileboot.common.exception.error.ErrorCode.Business;
 import com.agileboot.common.exception.error.ErrorCode.Client;
 import com.agileboot.common.exception.error.ErrorCode.Internal;
 import com.google.common.util.concurrent.UncheckedExecutionException;
-import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindException;
@@ -15,6 +14,8 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 全局异常处理器
@@ -39,7 +40,7 @@ public class GlobalExceptionInterceptor {
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ResponseDTO<?> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException e,
-        HttpServletRequest request) {
+                                                              HttpServletRequest request) {
         log.error("请求地址'{}',不支持'{}'请求", request.getRequestURI(), e.getMethod());
         return ResponseDTO.fail(new ApiException(Client.COMMON_REQUEST_METHOD_INVALID, e.getMethod()));
     }

@@ -1,4 +1,3 @@
-
 <p align="center">
       <img src="https://img.shields.io/badge/Release-V1.8.0-green.svg" alt="Downloads">
       <img src="https://img.shields.io/badge/JDK-1.8+-green.svg" alt="Build Status">
@@ -22,12 +21,11 @@
 
 ## ⚡平台简介⚡
 
-AgileBoot是一套开源的全栈精简快速开发平台，毫无保留给个人及企业免费使用。本项目的目标是做一款精简可靠，代码风格优良，项目规范的小型开发脚手架。
-适合个人开发者的小型项目或者公司内部项目使用。也可作为供初学者学习使用的案例。
-
+AgileBoot是一套开源的全栈精简快速开发平台，毫无保留给个人及企业免费使用。本项目的目标是做一款精简可靠，代码风格优良，项目规范的小型开发脚手架。 适合个人开发者的小型项目或者公司内部项目使用。也可作为供初学者学习使用的案例。
 
 * 前端是基于优秀的开源项目[Pure-Admin](https://github.com/pure-admin/vue-pure-admin)开发而成。在此感谢Pure-Admin作者。
-* 前端采用Vue3、Element Plus、TypeScript、Pinia。对应前端仓库 [AgileBoot-Front-End](https://github.com/valarchie/AgileBoot-Front-End) ，保持同步更新。
+* 前端采用Vue3、Element Plus、TypeScript、Pinia。对应前端仓库 [AgileBoot-Front-End](https://github.com/valarchie/AgileBoot-Front-End)
+  ，保持同步更新。
 * 后端采用Spring Boot、Spring Security & Jwt、Redis & MySql、Mybatis Plus、Hutool工具包。
 * 权限认证使用Jwt，支持多终端认证系统。
 * 支持注解式主从数据库切换，注解式请求限流，注解式重复请求拦截。
@@ -36,35 +34,38 @@ AgileBoot是一套开源的全栈精简快速开发平台，毫无保留给个�
 * ***有大量的单元测试，集成测试覆盖确保业务逻辑正确***。
 
 ***V1.0.0版本使用JS开发，V2.0.0版本使用TS开发***。  
-***V1.0.0地址：[后端(AgileBoot-Back-End-Basic)](https://github.com/valarchie/AgileBoot-Back-End-Basic) -  [前端(AgileBoot-Front-End-Basic)](https://github.com/valarchie/AgileBoot-Front-End-Basic)***
+***V1.0.0地址：[后端(AgileBoot-Back-End-Basic)](https://github.com/valarchie/AgileBoot-Back-End-Basic)
+-  [前端(AgileBoot-Front-End-Basic)](https://github.com/valarchie/AgileBoot-Front-End-Basic)***
 
-> 有任何问题或者建议，可以在 _Issues_ 中提给作者。  
-> 
+> 有任何问题或者建议，可以在 _Issues_ 中提给作者。
+>
 > 您的Issue比Star更重要
 >
 > 如果觉得项目对您有帮助，可以来个Star ⭐
 
-
 ## 💥 在线体验 💥
+
 演示地址：
+
 - www.agileboot.vip
 - www.agileboot.cc
->  账号密码：admin/admin123
 
+> 账号密码：admin/admin123
 
 ## 🌴 项目背景 🌴
+
 业余时间想做一些个人小项目，一开始找了很多开源项目比如Ruoyi / Jeecg / ElAdmin / RenRen-Fast / Guns / EAdmin  
 最后本项目选择基于Ruoyi项目进行完全重构改造。  
 首先非常感谢Ruoyi作者。但是Ruoyi项目存在太多缺陷。
+
 - 命名比较乱七八糟（很多很糟糕的命名，包括机翻英语乱用）
 - 项目分包以及模块比较乱
 - 比较原始的Controller > Service > DAO的开发模式。过于面向过程。
 - 一大堆自己造的轮子，并且没有UT覆盖。
 - 大量逻辑嵌套在if else块当中
 - 值的前后不统一，比如有的地方1代表是，有的地方1代表否
-- 很多很奇怪的代码写法（比如return result > 0 ? true:false..    一言难尽）
+- 很多很奇怪的代码写法（比如return result > 0 ? true:false.. 一言难尽）
 - 业务逻辑不集中，代码可读性较差。
-
 
 于是我做了大量的重构工作。
 
@@ -110,7 +111,6 @@ AgileBoot是一套开源的全栈精简快速开发平台，毫无保留给个�
 
 ## ✨ 使用 ✨
 
-
 ### 开发环境
 
 - JDK
@@ -135,7 +135,6 @@ AgileBoot是一套开源的全栈精简快速开发平台，毫无保留给个�
 | `knife4j`      | 接口文档框架          | 3.0.3             |
 | `Spring Task`  | 定时任务框架（适合小型项目）  | follow springboot |
 
-
 ### 启动说明
 
 #### 前置准备： 下载前后端代码
@@ -147,8 +146,8 @@ git clone https://github.com/valarchie/AgileBoot-Front-End
 
 #### 安装好Mysql和Redis
 
-
 #### 后端启动
+
 ```
 1. 生成所需的数据库表
 找到后端项目根目录下的sql目录中的agileboot_xxxxx.sql脚本文件(取最新的sql文件)。 导入到你新建的数据库中。
@@ -171,6 +170,7 @@ git clone https://github.com/valarchie/AgileBoot-Front-End
 ```
 
 #### 前端启动
+
 详细步骤请查看对应前端部分
 
 ```
@@ -192,7 +192,9 @@ ready in 4376ms.
 
 
 > 对于想要尝试全栈项目的前端人员，这边提供更简便的后端启动方式，无需配置Mysql和Redis直接启动
+
 #### 无Mysql/Redis 后端启动
+
 ```
 1. 找到agilboot-admin模块下的resource文件中的application.yml文件
 
@@ -213,9 +215,7 @@ agileboot.embedded.redis: true
 3. 找到agileboot-admin模块中的AgileBootAdminApplication启动类，直接启动即可
 ```
 
-
-## 🙊 系统内置功能 🙊  
-  
+## 🙊 系统内置功能 🙊
 
 🙂 大部分功能，均有通过 **单元测试** **集成测试** 保证质量。
 
@@ -235,7 +235,6 @@ agileboot.embedded.redis: true
 |     | 服务监控  | 监视当前系统CPU、内存、磁盘、堆栈等相关信息         |
 |     | 缓存监控  | 对系统的缓存信息查询，命令统计等                |
 |     | 连接池监视 | 监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈 |
-
 
 ## 🐯 工程结构 🐯
 
@@ -270,14 +269,13 @@ agileboot
 **查询**：Controller > xxxQuery > xxxApplicationService > xxxService(Db) > xxxMapper  
 **操作**：Controller > xxxCommand > xxxApplicationService > xxxModel(处理逻辑) > save 或者 update (本项目直接采用JPA的方式进行插入已经更新数据)
 
-这是借鉴CQRS的开发理念，将查询和操作分开处理。操作类的业务实现借鉴了DDD战术设计的理念，使用领域类，工厂类更面向对象的实现逻辑。 
-如果你不太适应这样的开发模式的话。可以在domain模块中按照你之前从Controller->Service->DAO的模式进行开发。it is up to you.
-
-
+这是借鉴CQRS的开发理念，将查询和操作分开处理。操作类的业务实现借鉴了DDD战术设计的理念，使用领域类，工厂类更面向对象的实现逻辑。 如果你不太适应这样的开发模式的话。可以在domain模块中按照你之前从Controller->
+Service->DAO的模式进行开发。it is up to you.
 
 ### 二次开发指南
 
 假设你要新增一个会员member业务，可以在以下三个模块新增对应的包来实现你的业务
+
 ``` 
 agileboot
 ├── agileboot-admin -- 
@@ -297,11 +295,10 @@ agileboot
 └─
 ```
 
-
-
 --- 
 
 ## 🎅 技术文档 🎅
+
 * [AgileBoot - 基于SpringBoot + Vue3的前后端快速开发脚手架](https://juejin.cn/post/7152871067151777829)
 * [AgileBoot - 手把手一步一步带你Run起全栈项目(SpringBoot+Vue3)](https://juejin.cn/post/7153812187834744845)
 * [AgileBoot - 项目内统一的错误码设计](https://juejin.cn/post/7156062116712022023)
@@ -311,24 +308,23 @@ agileboot
 * [AgileBoot - 项目中多级缓存设计实践总结](https://juejin.cn/post/7208112485764857914)
 * 持续输出中
 
-
-
 ## 🌻 注意事项 🌻
+
 - IDEA会自动将.properties文件的编码设置为ISO-8859-1,请在Settings > Editor > File Encodings > Properties Files > 设置为UTF-8
 - 请导入统一的代码格式化模板（Google）: Settings > Editor > Code Style > Java > 设置按钮 > import schema > 选择项目根目录下的GoogleStyle.xml文件
 - 如需要生成新的表，请使用CodeGenerator类进行生成。
-  - 填入数据库地址，账号密码，库名。然后填入所需的表名执行代码即可。（大概看一下代码就知道怎么填啦）
-  - 生成的类在infrastructure模块下的target/classes目录下
-  - 不同的数据库keywordsHandler方法请填入对应不同数据库handler。（搜索keywordsHandler关键字）
+    - 填入数据库地址，账号密码，库名。然后填入所需的表名执行代码即可。（大概看一下代码就知道怎么填啦）
+    - 生成的类在infrastructure模块下的target/classes目录下
+    - 不同的数据库keywordsHandler方法请填入对应不同数据库handler。（搜索keywordsHandler关键字）
 - 项目基础环境搭建，请参考docker目录下的指南搭建。保姆级启动说明：
-  - [AgileBoot - 手把手一步一步带你Run起全栈项目(SpringBoot+Vue3)](https://juejin.cn/post/7153812187834744845)
+    - [AgileBoot - 手把手一步一步带你Run起全栈项目(SpringBoot+Vue3)](https://juejin.cn/post/7153812187834744845)
 - 注意：管理后台的后端启动类是AgileBoot**Admin**Application
 - Swagger的API地址为 http://localhost:8080/v3/api-docs
 
 ## 🎬 AgileBoot全栈交流群 🎬
 
-QQ群：  [![加入QQ群](https://img.shields.io/badge/1398880-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=TR5guoXS0HssErVWefmdFRirJvfpEvp1&jump_from=webapi&authKey=VkWMmVhp/pNdWuRD8sqgM+Sv2+Vy2qCJQSeLmeXlLtfER2RJBi6zL56PdcRlCmTs) 点击按钮入群。
-
+QQ群：  [![加入QQ群](https://img.shields.io/badge/1398880-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=TR5guoXS0HssErVWefmdFRirJvfpEvp1&jump_from=webapi&authKey=VkWMmVhp/pNdWuRD8sqgM+Sv2+Vy2qCJQSeLmeXlLtfER2RJBi6zL56PdcRlCmTs)
+点击按钮入群。
 
 如果觉得该项目对您有帮助，可以小额捐赠支持本项目演示网站服务器等费用~
 
@@ -337,8 +333,8 @@ QQ群：  [![加入QQ群](https://img.shields.io/badge/1398880-blue.svg)](https:
 
 ## 💕 特别鸣谢
 
-
 - <a href="https://github.com/FerryboatSeranade" target="_blank">@pokr</a> 感谢提供ChatGpt账号助力本项目开发
 
 ## 💒 相关框架
+
 - 基于node.js开发的后端 <a href="https://gitee.com/TsMask/mask_api_midwayjs" target="_blank">Midwayjs</a> 

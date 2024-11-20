@@ -3,16 +3,18 @@ package com.agileboot.admin.customize.service.permission;
 import cn.hutool.core.collection.CollUtil;
 import com.agileboot.admin.customize.service.permission.model.AbstractDataPermissionChecker;
 import com.agileboot.admin.customize.service.permission.model.DataCondition;
-import com.agileboot.infrastructure.user.AuthenticationUtils;
-import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.agileboot.domain.system.user.db.SysUserEntity;
 import com.agileboot.domain.system.user.db.SysUserService;
-import java.util.List;
+import com.agileboot.infrastructure.user.AuthenticationUtils;
+import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 数据权限校验服务
+ *
  * @author valarchie
  */
 @Service("dataScope")
@@ -38,6 +40,7 @@ public class DataPermissionService {
 
     /**
      * 通过userId 校验当前用户 对 目标用户是否有操作权限
+     *
      * @param userIds 用户id列表
      * @return 校验结果
      */
@@ -64,7 +67,6 @@ public class DataPermissionService {
         AbstractDataPermissionChecker checker = DataPermissionCheckerFactory.getChecker(loginUser);
         return checker.check(loginUser, dataCondition);
     }
-
 
 
 }

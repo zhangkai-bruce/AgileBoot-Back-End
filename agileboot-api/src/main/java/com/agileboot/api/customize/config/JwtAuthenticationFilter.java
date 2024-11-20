@@ -3,11 +3,6 @@ package com.agileboot.api.customize.config;
 import com.agileboot.api.customize.service.JwtTokenService;
 import com.agileboot.infrastructure.user.app.AppLoginUser;
 import io.jsonwebtoken.Claims;
-import java.io.IOException;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +11,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 /**
  * token过滤器 验证token有效性
  * 继承OncePerRequestFilter类的话  可以确保只执行filter一次， 避免执行多次
+ *
  * @author valarchie
  */
 @Component
@@ -42,7 +44,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 AppLoginUser loginUser = new AppLoginUser(23232323L, false, "dasdsadsds");
                 loginUser.grantAppPermission("annie");
                 UsernamePasswordAuthenticationToken suer1 = new UsernamePasswordAuthenticationToken(loginUser, null,
-                    loginUser.getAuthorities());
+                        loginUser.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(suer1);
             }
         }

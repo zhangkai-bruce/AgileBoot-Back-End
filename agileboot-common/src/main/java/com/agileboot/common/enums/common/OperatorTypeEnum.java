@@ -1,10 +1,11 @@
 package com.agileboot.common.enums.common;
 
-import com.agileboot.common.enums.dictionary.Dictionary;
 import com.agileboot.common.enums.BasicEnum;
+import com.agileboot.common.enums.dictionary.Dictionary;
 
 /**
  * 操作者类型
+ *
  * @author valarchie
  */
 @Dictionary(name = "sysOperationLog.operatorType")

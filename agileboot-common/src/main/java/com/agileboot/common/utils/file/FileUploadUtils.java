@@ -63,7 +63,7 @@ public class FileUploadUtils {
      * 根据文件路径上传
      *
      * @param subDir 相对应用的基目录
-     * @param file 上传的文件
+     * @param file   上传的文件
      * @return 文件名称
      */
     public static String upload(String subDir, MultipartFile file) {
@@ -77,14 +77,14 @@ public class FileUploadUtils {
     /**
      * 文件上传
      *
-     * @param subDir 相对应用的子目录
-     * @param file 上传的文件
+     * @param subDir           相对应用的子目录
+     * @param file             上传的文件
      * @param allowedExtension 上传文件类型
      * @return 返回上传成功的文件名
      * @throws IOException 比如读写文件出错时
      */
     public static String upload(String subDir, MultipartFile file, String[] allowedExtension)
-        throws IOException {
+            throws IOException {
         isAllowedUpload(file, allowedExtension);
         String fileName = generateFilename(file);
         saveFileToLocal(file, subDir, fileName);
@@ -95,8 +95,8 @@ public class FileUploadUtils {
     /**
      * 将文件保存到服务器
      *
-     * @param file 文件
-     * @param subDir 子目录
+     * @param file     文件
+     * @param subDir   子目录
      * @param fileName 文件名
      */
     static void saveFileToLocal(MultipartFile file, String subDir, String fileName) throws IOException {
@@ -117,7 +117,7 @@ public class FileUploadUtils {
     /**
      * 获取文件的相对地址
      *
-     * @param subDir avatar
+     * @param subDir   avatar
      * @param fileName test.jpg
      * @return /profile/avatar/test.jpg
      */
@@ -129,7 +129,7 @@ public class FileUploadUtils {
     /**
      * 检测文件是否可以上传
      *
-     * @param file 文件
+     * @param file             文件
      * @param allowedExtension 允许的文件类型列表
      */
     static void isAllowedUpload(MultipartFile file, String[] allowedExtension) {
@@ -147,7 +147,7 @@ public class FileUploadUtils {
         String extension = getFileExtension(file);
         if (!isExtensionAllowed(extension, allowedExtension)) {
             throw new ApiException(ErrorCode.Business.UPLOAD_FILE_TYPE_NOT_ALLOWED,
-                StrUtil.join(",", (Object[]) allowedExtension));
+                    StrUtil.join(",", (Object[]) allowedExtension));
         }
     }
 
@@ -161,8 +161,8 @@ public class FileUploadUtils {
     public static boolean isAllowDownload(String resource) {
         // 禁止目录上跳级别
         return !StrUtil.contains(resource, "..") &&
-            // 检查允许下载的文件规则
-            StrUtil.containsAnyIgnoreCase(FileNameUtil.getSuffix(resource), ALLOWED_EXTENSIONS);
+                // 检查允许下载的文件规则
+                StrUtil.containsAnyIgnoreCase(FileNameUtil.getSuffix(resource), ALLOWED_EXTENSIONS);
     }
 
     /**
@@ -195,10 +195,10 @@ public class FileUploadUtils {
      */
     static String generateFilename(MultipartFile file) {
         return StrUtil.format("{}_{}_{}.{}",
-            DateUtil.format(DateUtil.date(), DatePattern.PURE_DATETIME_PATTERN),
-            FilenameUtils.getBaseName(file.getOriginalFilename()),
-            IdUtil.simpleUUID(),
-            getFileExtension(file));
+                DateUtil.format(DateUtil.date(), DatePattern.PURE_DATETIME_PATTERN),
+                FilenameUtils.getBaseName(file.getOriginalFilename()),
+                IdUtil.simpleUUID(),
+                getFileExtension(file));
     }
 
 

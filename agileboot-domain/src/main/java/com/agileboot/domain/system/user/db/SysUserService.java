@@ -29,7 +29,8 @@ public interface SysUserService extends IService<SysUserEntity> {
 
     /**
      * 检测邮箱是否唯一
-     * @param email 邮箱
+     *
+     * @param email  邮箱
      * @param userId 用户id
      * @return 校验结果
      */
@@ -37,6 +38,7 @@ public interface SysUserService extends IService<SysUserEntity> {
 
     /**
      * 检测用户名是否
+     *
      * @param userName 用户名
      * @return 校验结果
      */
@@ -44,6 +46,7 @@ public interface SysUserService extends IService<SysUserEntity> {
 
     /**
      * 获取用户的角色
+     *
      * @param userId 用户id
      * @return 用户角色
      */
@@ -51,6 +54,7 @@ public interface SysUserService extends IService<SysUserEntity> {
 
     /**
      * 获取用户的岗位
+     *
      * @param userId 用户id
      * @return 用户岗位
      */
@@ -58,6 +62,7 @@ public interface SysUserService extends IService<SysUserEntity> {
 
     /**
      * 获取用户的权限列表
+     *
      * @param userId 用户id
      * @return 用户菜单权限列表
      */
@@ -66,6 +71,7 @@ public interface SysUserService extends IService<SysUserEntity> {
 
     /**
      * 通过用户名查询用户
+     *
      * @param userName 用户名
      * @return 用户对象信息
      */

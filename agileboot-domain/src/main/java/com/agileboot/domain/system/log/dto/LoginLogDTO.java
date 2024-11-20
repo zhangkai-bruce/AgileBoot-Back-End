@@ -2,11 +2,12 @@ package com.agileboot.domain.system.log.dto;
 
 import com.agileboot.common.annotation.ExcelColumn;
 import com.agileboot.common.annotation.ExcelSheet;
-import com.agileboot.common.enums.common.LoginStatusEnum;
 import com.agileboot.common.enums.BasicEnumUtil;
+import com.agileboot.common.enums.common.LoginStatusEnum;
 import com.agileboot.domain.system.log.db.SysLoginInfoEntity;
-import java.util.Date;
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * @author valarchie
@@ -14,6 +15,26 @@ import lombok.Data;
 @Data
 @ExcelSheet(name = "登录日志")
 public class LoginLogDTO {
+
+    @ExcelColumn(name = "ID")
+    private String logId;
+    @ExcelColumn(name = "用户名")
+    private String username;
+    @ExcelColumn(name = "ip地址")
+    private String ipAddress;
+    @ExcelColumn(name = "登录地点")
+    private String loginLocation;
+    @ExcelColumn(name = "操作系统")
+    private String operationSystem;
+    @ExcelColumn(name = "浏览器")
+    private String browser;
+    private Integer status;
+    @ExcelColumn(name = "状态")
+    private String statusStr;
+    @ExcelColumn(name = "描述")
+    private String msg;
+    @ExcelColumn(name = "登录时间")
+    private Date loginTime;
 
     public LoginLogDTO(SysLoginInfoEntity entity) {
         if (entity != null) {
@@ -29,35 +50,5 @@ public class LoginLogDTO {
             loginTime = entity.getLoginTime();
         }
     }
-
-
-    @ExcelColumn(name = "ID")
-    private String logId;
-
-    @ExcelColumn(name = "用户名")
-    private String username;
-
-    @ExcelColumn(name = "ip地址")
-    private String ipAddress;
-
-    @ExcelColumn(name = "登录地点")
-    private String loginLocation;
-
-    @ExcelColumn(name = "操作系统")
-    private String operationSystem;
-
-    @ExcelColumn(name = "浏览器")
-    private String browser;
-
-    private Integer status;
-
-    @ExcelColumn(name = "状态")
-    private String statusStr;
-
-    @ExcelColumn(name = "描述")
-    private String msg;
-
-    @ExcelColumn(name = "登录时间")
-    private Date loginTime;
 
 }

@@ -4,8 +4,11 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
+import com.agileboot.common.enums.common.StatusEnum;
 import com.agileboot.domain.system.menu.command.AddMenuCommand;
 import com.agileboot.domain.system.menu.command.UpdateMenuCommand;
+import com.agileboot.domain.system.menu.db.SysMenuEntity;
+import com.agileboot.domain.system.menu.db.SysMenuService;
 import com.agileboot.domain.system.menu.dto.MenuDTO;
 import com.agileboot.domain.system.menu.dto.MenuDetailDTO;
 import com.agileboot.domain.system.menu.dto.RouterDTO;
@@ -13,18 +16,17 @@ import com.agileboot.domain.system.menu.model.MenuModel;
 import com.agileboot.domain.system.menu.model.MenuModelFactory;
 import com.agileboot.domain.system.menu.query.MenuQuery;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import com.agileboot.common.enums.common.StatusEnum;
-import com.agileboot.domain.system.menu.db.SysMenuEntity;
-import com.agileboot.domain.system.menu.db.SysMenuService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 /**
  * 菜单应用服务
+ *
  * @author valarchie
  */
 @Service
@@ -39,8 +41,8 @@ public class MenuApplicationService {
     public List<MenuDTO> getMenuList(MenuQuery query) {
         List<SysMenuEntity> list = menuService.list(query.toQueryWrapper());
         return list.stream().map(MenuDTO::new)
-            .sorted(Comparator.comparing(MenuDTO::getRank, Comparator.nullsLast(Integer::compareTo)))
-            .collect(Collectors.toList());
+                .sorted(Comparator.comparing(MenuDTO::getRank, Comparator.nullsLast(Integer::compareTo)))
+                .collect(Collectors.toList());
     }
 
     public MenuDetailDTO getMenuInfo(Long menuId) {
@@ -50,7 +52,7 @@ public class MenuApplicationService {
 
     public List<Tree<Long>> getDropdownList(SystemLoginUser loginUser) {
         List<SysMenuEntity> menuEntityList =
-            loginUser.isAdmin() ? menuService.list() : menuService.getMenuListByUserId(loginUser.getUserId());
+                loginUser.isAdmin() ? menuService.list() : menuService.getMenuListByUserId(loginUser.getUserId());
 
         return buildMenuTreeSelect(menuEntityList);
     }
@@ -123,9 +125,9 @@ public class MenuApplicationService {
 
         // 传给前端的路由排除掉按钮和停用的菜单
         List<SysMenuEntity> noButtonMenus = allMenus.stream()
-            .filter(menu -> !menu.getIsButton())
-            .filter(menu-> StatusEnum.ENABLE.getValue().equals(menu.getStatus()))
-            .collect(Collectors.toList());
+                .filter(menu -> !menu.getIsButton())
+                .filter(menu -> StatusEnum.ENABLE.getValue().equals(menu.getStatus()))
+                .collect(Collectors.toList());
 
         TreeNodeConfig config = new TreeNodeConfig();
         // 默认为id 可以不设置

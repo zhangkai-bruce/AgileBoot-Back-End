@@ -3,14 +3,16 @@ package com.agileboot.infrastructure.mybatisplus;
 import com.agileboot.infrastructure.user.AuthenticationUtils;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * Mybatis Plus允许在插入或者更新的时候
  * 自定义设定值
+ *
  * @author valarchie
  */
 @Component

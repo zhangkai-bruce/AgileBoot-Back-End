@@ -77,7 +77,6 @@ public class CustomExcelUtil {
     }
 
 
-
     public static <T> List<T> readFromInputStream(Class<T> clazz, InputStream inputStream) {
         ExcelReader reader = ExcelUtil.getReader(inputStream);
         // 去除掉excel中的html标签语言  避免xss攻击
@@ -95,7 +94,6 @@ public class CustomExcelUtil {
 
         return reader.read(0, 1, clazz);
     }
-
 
 
 }

@@ -3,17 +3,19 @@ package com.agileboot.domain.common.command;
 import cn.hutool.core.collection.CollUtil;
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode;
+import lombok.Data;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import lombok.Data;
 
 /**
  * @author valarchie
  */
 @Data
 public class BulkOperationCommand<T> {
+
+    private Set<T> ids;
 
     public BulkOperationCommand(List<T> idList) {
         if (CollUtil.isEmpty(idList)) {
@@ -22,7 +24,5 @@ public class BulkOperationCommand<T> {
         // 移除重复元素
         this.ids = new HashSet<>(idList);
     }
-
-    private Set<T> ids;
 
 }

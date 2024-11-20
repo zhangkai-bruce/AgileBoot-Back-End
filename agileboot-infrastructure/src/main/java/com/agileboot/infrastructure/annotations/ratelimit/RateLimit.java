@@ -7,11 +7,8 @@ import com.agileboot.common.utils.ServletHolderUtil;
 import com.agileboot.infrastructure.user.AuthenticationUtils;
 import com.agileboot.infrastructure.user.app.AppLoginUser;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+
+import java.lang.annotation.*;
 
 /**
  * 限流注解
@@ -49,12 +46,11 @@ public @interface RateLimit {
     CacheType cacheType() default CacheType.REDIS;
 
 
-
     enum LimitType {
         /**
          * 默认策略全局限流  不区分IP和用户
          */
-        GLOBAL{
+        GLOBAL {
             @Override
             public String generateCombinedKey(RateLimit rateLimiter) {
                 return rateLimiter.key() + this.name();

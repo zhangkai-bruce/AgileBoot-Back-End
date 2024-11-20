@@ -9,13 +9,15 @@ import com.agileboot.domain.system.role.db.SysRoleMenuEntity;
 import com.agileboot.domain.system.role.db.SysRoleMenuService;
 import com.agileboot.domain.system.role.db.SysRoleService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * 角色模型工厂
+ *
  * @author valarchie
  */
 @Component
@@ -35,9 +37,9 @@ public class RoleModelFactory {
         LambdaQueryWrapper<SysRoleMenuEntity> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(SysRoleMenuEntity::getRoleId, roleId);
         List<Long> menuIds = roleMenuService.list(queryWrapper).stream().map(SysRoleMenuEntity::getMenuId)
-            .collect(Collectors.toList());
+                .collect(Collectors.toList());
         List<Long> deptIds = StrUtil.split(byId.getDeptIdSet(), ",").stream()
-            .map(Convert::toLong).collect( Collectors.toList());
+                .map(Convert::toLong).collect(Collectors.toList());
 
         RoleModel roleModel = new RoleModel(byId, roleService, roleMenuService);
 

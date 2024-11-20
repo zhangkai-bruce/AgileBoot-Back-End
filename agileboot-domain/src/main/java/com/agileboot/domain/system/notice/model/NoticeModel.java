@@ -1,11 +1,11 @@
 package com.agileboot.domain.system.notice.model;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.agileboot.domain.system.notice.command.NoticeAddCommand;
-import com.agileboot.domain.system.notice.command.NoticeUpdateCommand;
+import com.agileboot.common.enums.BasicEnumUtil;
 import com.agileboot.common.enums.common.NoticeTypeEnum;
 import com.agileboot.common.enums.common.StatusEnum;
-import com.agileboot.common.enums.BasicEnumUtil;
+import com.agileboot.domain.system.notice.command.NoticeAddCommand;
+import com.agileboot.domain.system.notice.command.NoticeUpdateCommand;
 import com.agileboot.domain.system.notice.db.SysNoticeEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

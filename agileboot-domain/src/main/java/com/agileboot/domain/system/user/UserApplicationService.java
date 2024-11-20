@@ -5,16 +5,16 @@ import com.agileboot.common.core.page.PageDTO;
 import com.agileboot.domain.common.cache.CacheCenter;
 import com.agileboot.domain.common.command.BulkOperationCommand;
 import com.agileboot.domain.common.dto.CurrentLoginUserDTO;
+import com.agileboot.domain.system.post.db.SysPostEntity;
+import com.agileboot.domain.system.post.db.SysPostService;
 import com.agileboot.domain.system.post.dto.PostDTO;
+import com.agileboot.domain.system.role.db.SysRoleEntity;
+import com.agileboot.domain.system.role.db.SysRoleService;
 import com.agileboot.domain.system.role.dto.RoleDTO;
-import com.agileboot.domain.system.user.command.AddUserCommand;
-import com.agileboot.domain.system.user.command.ChangeStatusCommand;
-import com.agileboot.domain.system.user.command.ResetPasswordCommand;
-import com.agileboot.domain.system.user.command.UpdateProfileCommand;
-import com.agileboot.domain.system.user.command.UpdateUserAvatarCommand;
-import com.agileboot.domain.system.user.command.UpdateUserCommand;
-import com.agileboot.domain.system.user.command.UpdateUserPasswordCommand;
+import com.agileboot.domain.system.user.command.*;
 import com.agileboot.domain.system.user.db.SearchUserDO;
+import com.agileboot.domain.system.user.db.SysUserEntity;
+import com.agileboot.domain.system.user.db.SysUserService;
 import com.agileboot.domain.system.user.dto.UserDTO;
 import com.agileboot.domain.system.user.dto.UserDetailDTO;
 import com.agileboot.domain.system.user.dto.UserProfileDTO;
@@ -22,18 +22,13 @@ import com.agileboot.domain.system.user.model.UserModel;
 import com.agileboot.domain.system.user.model.UserModelFactory;
 import com.agileboot.domain.system.user.query.SearchUserQuery;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import com.agileboot.domain.system.post.db.SysPostEntity;
-import com.agileboot.domain.system.role.db.SysRoleEntity;
-import com.agileboot.domain.system.user.db.SysUserEntity;
-import com.agileboot.domain.system.post.db.SysPostService;
-import com.agileboot.domain.system.role.db.SysRoleService;
-import com.agileboot.domain.system.user.db.SysUserService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author valarchie
@@ -100,7 +95,7 @@ public class UserApplicationService {
         UserDetailDTO detailDTO = new UserDetailDTO();
 
         LambdaQueryWrapper<SysRoleEntity> roleQuery = new LambdaQueryWrapper<SysRoleEntity>()
-            .orderByAsc(SysRoleEntity::getRoleSort);
+                .orderByAsc(SysRoleEntity::getRoleSort);
         List<RoleDTO> roleDtoList = roleService.list(roleQuery).stream().map(RoleDTO::new).collect(Collectors.toList());
         List<PostDTO> postDtoList = postService.list().stream().map(PostDTO::new).collect(Collectors.toList());
         detailDTO.setRoleOptions(roleDtoList);

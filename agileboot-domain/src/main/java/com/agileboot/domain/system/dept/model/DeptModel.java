@@ -2,14 +2,15 @@ package com.agileboot.domain.system.dept.model;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.convert.Convert;
+import com.agileboot.common.enums.BasicEnumUtil;
+import com.agileboot.common.enums.common.StatusEnum;
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode;
 import com.agileboot.domain.system.dept.command.AddDeptCommand;
 import com.agileboot.domain.system.dept.command.UpdateDeptCommand;
-import com.agileboot.common.enums.common.StatusEnum;
-import com.agileboot.common.enums.BasicEnumUtil;
 import com.agileboot.domain.system.dept.db.SysDeptEntity;
 import com.agileboot.domain.system.dept.db.SysDeptService;
+
 import java.util.Objects;
 
 /**
@@ -82,7 +83,7 @@ public class DeptModel extends SysDeptEntity {
 
         // 检查 parentDept 是否为 null 或者状态为禁用
         if (parentDept == null || StatusEnum.DISABLE.equals(
-            BasicEnumUtil.fromValue(StatusEnum.class, parentDept.getStatus()))) {
+                BasicEnumUtil.fromValue(StatusEnum.class, parentDept.getStatus()))) {
             throw new ApiException(ErrorCode.Business.DEPT_PARENT_DEPT_NO_EXIST_OR_DISABLED);
         }
 
@@ -97,7 +98,7 @@ public class DeptModel extends SysDeptEntity {
      */
     public void checkStatusAllowChange() {
         if (StatusEnum.DISABLE.getValue().equals(getStatus()) &&
-            deptService.hasChildrenDept(getDeptId(), true)) {
+                deptService.hasChildrenDept(getDeptId(), true)) {
             throw new ApiException(ErrorCode.Business.DEPT_STATUS_ID_IS_NOT_ALLOWED_CHANGE);
         }
 

@@ -1,8 +1,9 @@
 package com.agileboot.domain.common.dto;
 
 import com.agileboot.domain.system.user.dto.UserDTO;
-import java.util.Set;
 import lombok.Data;
+
+import java.util.Set;
 
 /**
  * @author valarchie

@@ -3,10 +3,11 @@ package com.agileboot.common.query;
 
 import com.agileboot.common.core.page.AbstractQuery;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import java.util.Date;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Date;
 
 class AbstractQueryTest {
 
@@ -58,7 +59,6 @@ class AbstractQueryTest {
     }
 
 
-
     @Test
     void testConvertSortDirection() {
         query.setOrderDirection("ascending");
@@ -73,8 +73,6 @@ class AbstractQueryTest {
         query.setOrderDirection(null);
         Assertions.assertNull(query.convertSortDirection());
     }
-
-
 
 
 }

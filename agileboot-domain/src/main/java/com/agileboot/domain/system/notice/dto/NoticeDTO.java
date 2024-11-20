@@ -3,14 +3,23 @@ package com.agileboot.domain.system.notice.dto;
 import com.agileboot.domain.common.cache.CacheCenter;
 import com.agileboot.domain.system.notice.db.SysNoticeEntity;
 import com.agileboot.domain.system.user.db.SysUserEntity;
-import java.util.Date;
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * @author valarchie
  */
 @Data
 public class NoticeDTO {
+
+    private String noticeId;
+    private String noticeTitle;
+    private Integer noticeType;
+    private String noticeContent;
+    private Integer status;
+    private Date createTime;
+    private String creatorName;
 
     public NoticeDTO(SysNoticeEntity entity) {
         if (entity != null) {
@@ -27,19 +36,5 @@ public class NoticeDTO {
             }
         }
     }
-
-    private String noticeId;
-
-    private String noticeTitle;
-
-    private Integer noticeType;
-
-    private String noticeContent;
-
-    private Integer status;
-
-    private Date createTime;
-
-    private String creatorName;
 
 }

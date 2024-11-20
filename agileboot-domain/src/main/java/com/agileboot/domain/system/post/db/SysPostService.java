@@ -14,7 +14,8 @@ public interface SysPostService extends IService<SysPostEntity> {
 
     /**
      * 校验岗位名称
-     * @param postId 职位Id
+     *
+     * @param postId   职位Id
      * @param postName 职位名称
      * @return 结果
      */
@@ -22,7 +23,8 @@ public interface SysPostService extends IService<SysPostEntity> {
 
     /**
      * 校验岗位编码
-     * @param postId 职位id
+     *
+     * @param postId   职位id
      * @param postCode 职位代码
      * @return 结果
      */

@@ -1,20 +1,21 @@
 package com.agileboot.domain.common.cache;
 
 import cn.hutool.extra.spring.SpringUtil;
+import com.agileboot.domain.system.post.db.SysPostEntity;
+import com.agileboot.domain.system.post.db.SysPostService;
+import com.agileboot.domain.system.role.db.SysRoleEntity;
+import com.agileboot.domain.system.role.db.SysRoleService;
+import com.agileboot.domain.system.user.db.SysUserEntity;
+import com.agileboot.domain.system.user.db.SysUserService;
 import com.agileboot.infrastructure.cache.RedisUtil;
 import com.agileboot.infrastructure.cache.redis.CacheKeyEnum;
 import com.agileboot.infrastructure.cache.redis.RedisCacheTemplate;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import com.agileboot.domain.system.post.db.SysPostEntity;
-import com.agileboot.domain.system.role.db.SysRoleEntity;
-import com.agileboot.domain.system.user.db.SysUserEntity;
-import com.agileboot.domain.system.post.db.SysPostService;
-import com.agileboot.domain.system.role.db.SysRoleService;
-import com.agileboot.domain.system.user.db.SysUserService;
-import java.io.Serializable;
-import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.io.Serializable;
 
 /**
  * @author valarchie

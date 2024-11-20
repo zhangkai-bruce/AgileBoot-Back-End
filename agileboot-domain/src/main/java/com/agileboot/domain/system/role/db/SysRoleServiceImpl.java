@@ -5,9 +5,10 @@ import com.agileboot.domain.system.user.db.SysUserEntity;
 import com.agileboot.domain.system.user.db.SysUserMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -27,7 +28,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity
     public boolean isRoleNameDuplicated(Long roleId, String roleName) {
         QueryWrapper<SysRoleEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.ne(roleId != null, "role_id", roleId)
-            .eq("role_name", roleName);
+                .eq("role_name", roleName);
         return this.baseMapper.exists(queryWrapper);
     }
 
@@ -35,7 +36,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity
     public boolean isRoleKeyDuplicated(Long roleId, String roleKey) {
         QueryWrapper<SysRoleEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.ne(roleId != null, "role_id", roleId)
-            .eq("role_key", roleKey);
+                .eq("role_key", roleKey);
         return this.baseMapper.exists(queryWrapper);
     }
 

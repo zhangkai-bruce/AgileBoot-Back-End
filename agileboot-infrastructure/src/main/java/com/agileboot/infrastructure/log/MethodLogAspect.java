@@ -28,14 +28,14 @@ public class MethodLogAspect {
     public Object aroundDbService(ProceedingJoinPoint joinPoint) throws Throwable {
         Object proceed = joinPoint.proceed();
         log.info("DB SERVICE : {} ; REQUEST：{} ; RESPONSE : {}", joinPoint.getSignature().toShortString(),
-            safeToJson(joinPoint.getArgs()), safeToJson(proceed));
+                safeToJson(joinPoint.getArgs()), safeToJson(proceed));
         return proceed;
     }
 
     @AfterThrowing(value = "dbService()", throwing = "e")
     public void afterDbServiceThrow(JoinPoint joinPoint, Exception e) {
         log.error("DB SERVICE : {} ; REQUEST：{} ; EXCEPTION : {}", joinPoint.getSignature().toShortString(),
-            safeToJson(joinPoint.getArgs()), e.getMessage());
+                safeToJson(joinPoint.getArgs()), e.getMessage());
     }
 
 
@@ -47,14 +47,14 @@ public class MethodLogAspect {
     public Object aroundApplicationService(ProceedingJoinPoint joinPoint) throws Throwable {
         Object proceed = joinPoint.proceed();
         log.info("APPLICATION SERVICE : {} ; REQUEST：{} ; RESPONSE : {}", joinPoint.getSignature().toShortString(),
-            safeToJson(joinPoint.getArgs()), safeToJson(proceed));
+                safeToJson(joinPoint.getArgs()), safeToJson(proceed));
         return proceed;
     }
 
     @AfterThrowing(value = "applicationServiceLog()", throwing = "e")
     public void afterApplicationServiceThrow(JoinPoint joinPoint, Exception e) {
         log.error("APPLICATION SERVICE : {} ; REQUEST：{} ; EXCEPTION : {}", joinPoint.getSignature().toShortString(),
-            safeToJson(joinPoint.getArgs()), e.getMessage());
+                safeToJson(joinPoint.getArgs()), e.getMessage());
     }
 
 

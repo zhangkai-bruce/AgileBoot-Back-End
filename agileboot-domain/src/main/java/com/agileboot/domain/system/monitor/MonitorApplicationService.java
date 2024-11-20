@@ -9,19 +9,15 @@ import com.agileboot.domain.system.monitor.dto.RedisCacheInfoDTO;
 import com.agileboot.domain.system.monitor.dto.RedisCacheInfoDTO.CommandStatusDTO;
 import com.agileboot.domain.system.monitor.dto.ServerInfo;
 import com.agileboot.infrastructure.cache.redis.CacheKeyEnum;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Properties;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.connection.RedisServerCommands;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author valarchie
@@ -35,7 +31,7 @@ public class MonitorApplicationService {
     public RedisCacheInfoDTO getRedisCacheInfo() {
         Properties info = (Properties) redisTemplate.execute((RedisCallback<Object>) RedisServerCommands::info);
         Properties commandStats = (Properties) redisTemplate.execute(
-            (RedisCallback<Object>) connection -> connection.info("commandstats"));
+                (RedisCallback<Object>) connection -> connection.info("commandstats"));
         Long dbSize = redisTemplate.execute(RedisServerCommands::dbSize);
 
         if (commandStats == null || info == null) {
@@ -65,15 +61,15 @@ public class MonitorApplicationService {
         Collection<String> keys = redisTemplate.keys(CacheKeyEnum.LOGIN_USER_KEY.key() + "*");
 
         Stream<OnlineUserDTO> onlineUserStream = keys.stream().map(o ->
-                    CacheCenter.loginUserCache.getObjectOnlyInCacheByKey(o))
-            .filter(Objects::nonNull).map(OnlineUserDTO::new);
+                        CacheCenter.loginUserCache.getObjectOnlyInCacheByKey(o))
+                .filter(Objects::nonNull).map(OnlineUserDTO::new);
 
         List<OnlineUserDTO> filteredOnlineUsers = onlineUserStream
-            .filter(o ->
-                StrUtil.isEmpty(username) || username.equals(o.getUsername())
-            ).filter( o ->
-                StrUtil.isEmpty(ipAddress) || ipAddress.equals(o.getIpAddress())
-            ).collect(Collectors.toList());
+                .filter(o ->
+                        StrUtil.isEmpty(username) || username.equals(o.getUsername())
+                ).filter(o ->
+                        StrUtil.isEmpty(ipAddress) || ipAddress.equals(o.getIpAddress())
+                ).collect(Collectors.toList());
 
         Collections.reverse(filteredOnlineUsers);
         return filteredOnlineUsers;

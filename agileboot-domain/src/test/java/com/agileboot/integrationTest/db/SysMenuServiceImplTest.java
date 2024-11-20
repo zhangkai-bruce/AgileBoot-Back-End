@@ -1,17 +1,18 @@
 package com.agileboot.integrationTest.db;
 
 import cn.hutool.core.collection.CollUtil;
-import com.agileboot.integrationTest.IntegrationTestApplication;
 import com.agileboot.domain.system.menu.db.SysMenuEntity;
 import com.agileboot.domain.system.menu.db.SysMenuService;
-import java.util.List;
-import javax.annotation.Resource;
+import com.agileboot.integrationTest.IntegrationTestApplication;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @SpringBootTest(classes = IntegrationTestApplication.class)
 @RunWith(SpringRunner.class)
@@ -72,7 +73,6 @@ class SysMenuServiceImplTest {
         Assertions.assertFalse(isNotAssignToRole);
         Assertions.assertTrue(isAssignToRole);
     }
-
 
 
 }

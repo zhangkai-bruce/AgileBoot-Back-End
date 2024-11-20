@@ -2,23 +2,24 @@ package com.agileboot.domain.system.role.model;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
+import com.agileboot.common.enums.common.StatusEnum;
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode;
 import com.agileboot.common.exception.error.ErrorCode.Business;
 import com.agileboot.domain.system.role.command.AddRoleCommand;
 import com.agileboot.domain.system.role.command.UpdateRoleCommand;
-import com.agileboot.common.enums.common.StatusEnum;
 import com.agileboot.domain.system.role.db.SysRoleEntity;
 import com.agileboot.domain.system.role.db.SysRoleMenuEntity;
 import com.agileboot.domain.system.role.db.SysRoleMenuService;
 import com.agileboot.domain.system.role.db.SysRoleService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * @author valarchie
@@ -97,7 +98,6 @@ public class RoleModel extends SysRoleEntity {
         String deptIdSet = StrUtil.join(",", deptIds);
         setDeptIdSet(deptIdSet);
     }
-
 
 
     @Override

@@ -1,14 +1,15 @@
 package com.agileboot.domain.system.menu.dto;
 
 import cn.hutool.core.util.StrUtil;
-import com.agileboot.common.utils.jackson.JacksonUtil;
+import com.agileboot.common.enums.BasicEnumUtil;
 import com.agileboot.common.enums.common.MenuTypeEnum;
 import com.agileboot.common.enums.common.StatusEnum;
-import com.agileboot.common.enums.BasicEnumUtil;
+import com.agileboot.common.utils.jackson.JacksonUtil;
 import com.agileboot.domain.system.menu.db.SysMenuEntity;
-import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * @author valarchie
@@ -16,6 +17,21 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class MenuDTO {
+
+    // 设置成id和parentId 便于前端处理树级结构
+    private Long id;
+    private Long parentId;
+    private String menuName;
+    private String routerName;
+    private String path;
+    private Integer rank;
+    private Integer menuType;
+    private String menuTypeStr;
+    private Boolean isButton;
+    private Integer status;
+    private String statusStr;
+    private Date createTime;
+    private String icon;
 
     public MenuDTO(SysMenuEntity entity) {
         if (entity != null) {
@@ -43,34 +59,6 @@ public class MenuDTO {
             this.createTime = entity.getCreateTime();
         }
     }
-
-    // 设置成id和parentId 便于前端处理树级结构
-    private Long id;
-
-    private Long parentId;
-
-    private String menuName;
-
-    private String routerName;
-
-    private String path;
-
-    private Integer rank;
-
-    private Integer menuType;
-
-    private String menuTypeStr;
-
-    private Boolean isButton;
-
-    private Integer status;
-
-    private String statusStr;
-
-    private Date createTime;
-
-    private String icon;
-
 
 
 }

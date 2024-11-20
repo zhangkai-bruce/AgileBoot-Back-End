@@ -1,9 +1,10 @@
 package com.agileboot.domain.common.dto;
 
 import cn.hutool.core.lang.tree.Tree;
-import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * @author valarchie

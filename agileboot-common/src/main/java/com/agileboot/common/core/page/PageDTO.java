@@ -1,11 +1,13 @@
 package com.agileboot.common.core.page;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.List;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * 分页模型类
+ *
  * @author valarchie
  */
 @Data

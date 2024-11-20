@@ -10,12 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateUserAvatarCommand {
 
+    private Long userId;
+    private String avatar;
     public UpdateUserAvatarCommand(Long userId, String avatar) {
         this.userId = userId;
         this.avatar = avatar;
     }
-
-    private Long userId;
-    private String avatar;
 
 }

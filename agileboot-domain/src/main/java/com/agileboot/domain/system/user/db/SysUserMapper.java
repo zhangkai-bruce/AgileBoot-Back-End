@@ -29,10 +29,10 @@ public interface SysUserMapper extends BaseMapper<SysUserEntity> {
      * @return 角色列表
      */
     @Select("SELECT DISTINCT r.* "
-        + "FROM sys_role r "
-        + " LEFT JOIN sys_user u ON u.role_id = r.role_id "
-        + "WHERE r.deleted = 0 "
-        + " AND u.user_id = #{userId}")
+            + "FROM sys_role r "
+            + " LEFT JOIN sys_user u ON u.role_id = r.role_id "
+            + "WHERE r.deleted = 0 "
+            + " AND u.user_id = #{userId}")
     List<SysRoleEntity> getRolesByUserId(Long userId);
 
     /**
@@ -42,10 +42,10 @@ public interface SysUserMapper extends BaseMapper<SysUserEntity> {
      * @return 结果
      */
     @Select("SELECT p.* "
-        + "FROM sys_post p "
-        + " LEFT JOIN sys_user u ON p.post_id = u.post_id "
-        + "WHERE u.user_id = #{userId} "
-        + " AND p.deleted = 0")
+            + "FROM sys_post p "
+            + " LEFT JOIN sys_user u ON p.post_id = u.post_id "
+            + "WHERE u.user_id = #{userId} "
+            + " AND p.deleted = 0")
     List<SysPostEntity> getPostsByUserId(Long userId);
 
     /**
@@ -55,13 +55,13 @@ public interface SysUserMapper extends BaseMapper<SysUserEntity> {
      * @return 权限列表
      */
     @Select("SELECT DISTINCT m.perms "
-        + "FROM sys_menu m "
-        + " LEFT JOIN sys_role_menu rm ON m.menu_id = rm.menu_id "
-        + " LEFT JOIN sys_user u ON rm.role_id = u.role_id "
-        + " LEFT JOIN sys_role r ON r.role_id = u.role_id "
-        + "WHERE m.status = 1 AND m.deleted = 0 "
-        + " AND r.status = 1 AND r.deleted = 0 "
-        + " AND u.user_id = #{userId}")
+            + "FROM sys_menu m "
+            + " LEFT JOIN sys_role_menu rm ON m.menu_id = rm.menu_id "
+            + " LEFT JOIN sys_user u ON rm.role_id = u.role_id "
+            + " LEFT JOIN sys_role r ON r.role_id = u.role_id "
+            + "WHERE m.status = 1 AND m.deleted = 0 "
+            + " AND r.status = 1 AND r.deleted = 0 "
+            + " AND u.user_id = #{userId}")
     Set<String> getMenuPermsByUserId(Long userId);
 
     /**
@@ -72,25 +72,26 @@ public interface SysUserMapper extends BaseMapper<SysUserEntity> {
      * @return 分页处理后的用户列表
      */
     @Select("SELECT DISTINCT u.user_id, u.dept_id, u.username, u.nick_name, u.email "
-        + " , u.phone_number, u.status, u.create_time "
-        + "FROM sys_user u "
-        + " LEFT JOIN sys_dept d ON u.dept_id = d.dept_id "
-        + " LEFT JOIN sys_role r ON r.role_id = u.role_id"
-        + " ${ew.customSqlSegment}")
+            + " , u.phone_number, u.status, u.create_time "
+            + "FROM sys_user u "
+            + " LEFT JOIN sys_dept d ON u.dept_id = d.dept_id "
+            + " LEFT JOIN sys_role r ON r.role_id = u.role_id"
+            + " ${ew.customSqlSegment}")
     Page<SysUserEntity> getUserListByRole(Page<SysUserEntity> page,
-        @Param(Constants.WRAPPER) Wrapper<SysUserEntity> queryWrapper);
+                                          @Param(Constants.WRAPPER) Wrapper<SysUserEntity> queryWrapper);
 
     /**
      * 根据条件分页查询用户列表
-     * @param page 页码对象
+     *
+     * @param page         页码对象
      * @param queryWrapper 查询对象
      * @return 用户信息集合信息
      */
     @Select("SELECT u.*, d.dept_name, d.leader_name as dept_leader "
-        + "FROM sys_user u "
-        + " LEFT JOIN sys_dept d ON u.dept_id = d.dept_id "
-        + "${ew.customSqlSegment}")
+            + "FROM sys_user u "
+            + " LEFT JOIN sys_dept d ON u.dept_id = d.dept_id "
+            + "${ew.customSqlSegment}")
     Page<SearchUserDO> getUserList(Page<SearchUserDO> page,
-        @Param(Constants.WRAPPER) Wrapper<SearchUserDO> queryWrapper);
+                                   @Param(Constants.WRAPPER) Wrapper<SearchUserDO> queryWrapper);
 
 }

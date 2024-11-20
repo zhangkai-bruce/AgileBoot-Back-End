@@ -1,15 +1,11 @@
 package com.agileboot.infrastructure.filter;
 
+import javax.servlet.*;
 import java.io.IOException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 
 /**
  * 过滤器模板代码
+ *
  * @author valarchie
  */
 public class TestFilter implements Filter {
@@ -21,7 +17,7 @@ public class TestFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-        throws IOException, ServletException {
+            throws IOException, ServletException {
         // 实现你的逻辑
         chain.doFilter(request, response);
     }

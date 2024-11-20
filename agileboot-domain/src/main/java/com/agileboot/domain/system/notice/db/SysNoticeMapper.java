@@ -25,10 +25,10 @@ public interface SysNoticeMapper extends BaseMapper<SysNoticeEntity> {
      * @return 分页处理后的公告列表
      */
     @Select("SELECT n.* "
-        + "FROM sys_notice n "
-        + "LEFT JOIN sys_user u ON n.creator_id = u.user_id"
-        + " ${ew.customSqlSegment}")
+            + "FROM sys_notice n "
+            + "LEFT JOIN sys_user u ON n.creator_id = u.user_id"
+            + " ${ew.customSqlSegment}")
     Page<SysNoticeEntity> getNoticeList(Page<SysNoticeEntity> page,
-        @Param(Constants.WRAPPER) Wrapper<SysNoticeEntity> queryWrapper);
+                                        @Param(Constants.WRAPPER) Wrapper<SysNoticeEntity> queryWrapper);
 
 }

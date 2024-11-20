@@ -2,12 +2,14 @@ package com.agileboot.infrastructure.cache.aop;
 
 import cn.hutool.core.util.StrUtil;
 import com.google.common.cache.CacheBuilder;
+import org.springframework.cache.Cache;
+import org.springframework.cache.support.SimpleValueWrapper;
+
+import javax.annotation.PostConstruct;
 import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
-import javax.annotation.PostConstruct;
-import org.springframework.cache.Cache;
-import org.springframework.cache.support.SimpleValueWrapper;
+
 /**
  * @author valarchie
  */
@@ -22,20 +24,19 @@ public class GuavaCacheBean implements Cache {
     @PostConstruct
     private void init() {
         storage = CacheBuilder.newBuilder()
-            // 设置缓存的容量为100
-            .maximumSize(100)
-            // 设置初始容量为16
-            .initialCapacity(16)
-            // 设置过期时间为写入缓存后10分钟过期
-            .refreshAfterWrite(10, TimeUnit.MINUTES)
-            .build();
+                // 设置缓存的容量为100
+                .maximumSize(100)
+                // 设置初始容量为16
+                .initialCapacity(16)
+                // 设置过期时间为写入缓存后10分钟过期
+                .refreshAfterWrite(10, TimeUnit.MINUTES)
+                .build();
     }
 
     @Override
     public String getName() {
         return CacheNameConstants.GUAVA;
     }
-
 
 
     @Override

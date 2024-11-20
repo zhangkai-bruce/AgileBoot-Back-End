@@ -1,11 +1,12 @@
 package com.agileboot.admin.customize.service.permission.model;
 
-import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.agileboot.domain.system.dept.db.SysDeptService;
+import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import lombok.Data;
 
 /**
  * 数据权限测试接口
+ *
  * @author valarchie
  */
 @Data

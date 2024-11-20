@@ -6,9 +6,10 @@ import com.agileboot.domain.system.role.db.SysRoleEntity;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Set;
-import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -34,7 +35,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     public boolean isPhoneDuplicated(String phone, Long userId) {
         QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.ne(userId != null, "user_id", userId)
-            .eq("phone_number", phone);
+                .eq("phone_number", phone);
         return baseMapper.exists(queryWrapper);
     }
 
@@ -43,7 +44,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     public boolean isEmailDuplicated(String email, Long userId) {
         QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.ne(userId != null, "user_id", userId)
-            .eq("email", email);
+                .eq("email", email);
         return baseMapper.exists(queryWrapper);
     }
 

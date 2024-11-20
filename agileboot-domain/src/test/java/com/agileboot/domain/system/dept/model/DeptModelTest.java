@@ -1,10 +1,5 @@
 package com.agileboot.domain.system.dept.model;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode.Business;
 import com.agileboot.domain.system.dept.db.SysDeptEntity;
@@ -12,6 +7,9 @@ import com.agileboot.domain.system.dept.db.SysDeptService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
 
 class DeptModelTest {
 
@@ -27,8 +25,8 @@ class DeptModelTest {
         DeptModel deptModel = deptModelFactory.create();
         deptModel.setDeptName("dept 1");
         when(
-            deptService.isDeptNameDuplicated(ArgumentMatchers.any(), ArgumentMatchers.any(),
-                ArgumentMatchers.any())).thenReturn(true);
+                deptService.isDeptNameDuplicated(ArgumentMatchers.any(), ArgumentMatchers.any(),
+                        ArgumentMatchers.any())).thenReturn(true);
 
         ApiException exception = assertThrows(ApiException.class, deptModel::checkDeptNameUnique);
         Assertions.assertEquals(Business.DEPT_NAME_IS_NOT_UNIQUE, exception.getErrorCode());
@@ -67,7 +65,7 @@ class DeptModelTest {
         when(deptService.isDeptAssignedToUsers(DEPT_ID)).thenReturn(true);
 
         ApiException exception = assertThrows(ApiException.class,
-            deptModel::checkDeptAssignedToUsers);
+                deptModel::checkDeptAssignedToUsers);
 
         Assertions.assertEquals(Business.DEPT_EXIST_LINK_USER_NOT_ALLOW_DELETE, exception.getErrorCode());
     }

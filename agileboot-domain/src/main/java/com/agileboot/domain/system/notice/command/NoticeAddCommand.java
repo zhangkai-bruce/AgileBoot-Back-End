@@ -2,9 +2,10 @@ package com.agileboot.domain.system.notice.command;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.deser.std.StringDeserializer;
+import lombok.Data;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import lombok.Data;
 
 /**
  * @author valarchie

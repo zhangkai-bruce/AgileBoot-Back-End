@@ -5,8 +5,6 @@ public class ApiEncryptor {
     public static void main(String[] args) {
 
 
-
-
     }
 
 }

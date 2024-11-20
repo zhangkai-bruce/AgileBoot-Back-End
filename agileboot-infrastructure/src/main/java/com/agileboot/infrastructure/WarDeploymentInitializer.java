@@ -7,6 +7,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * 将Spring Boot应用打成WAR包，然后部署到外部容器运行，那么我们传统的使用Main类启动的方式稍显蹩脚，
  * 因为外部容器无法识别到应用启动类，需要在应用中继承SpringBootServletInitializer类，然后重写config方法，
  * 将其指向应用启动类。
+ *
  * @author valarchie
  */
 public class WarDeploymentInitializer extends SpringBootServletInitializer {

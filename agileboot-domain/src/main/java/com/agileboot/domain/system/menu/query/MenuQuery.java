@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class MenuQuery extends AbstractQuery<SysMenuEntity> {
-      // 直接交给前端筛选
+    // 直接交给前端筛选
 //    private String menuName;
 //    private Boolean isVisible;
 //    private Integer status;

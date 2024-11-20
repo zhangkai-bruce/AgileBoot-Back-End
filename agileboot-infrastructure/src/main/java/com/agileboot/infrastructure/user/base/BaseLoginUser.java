@@ -5,17 +5,19 @@ import com.agileboot.common.utils.ServletHolderUtil;
 import com.agileboot.common.utils.ip.IpRegionUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import eu.bitwalker.useragentutils.UserAgent;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 /**
  * 登录用户身份权限
+ *
  * @author valarchie
  */
 @Data
@@ -23,23 +25,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class BaseLoginUser implements UserDetails {
 
     private static final long serialVersionUID = 1L;
-
-    protected Long userId;
-
-    /**
-     * 用户唯一标识，缓存的key
-     */
-    protected String cachedKey;
-
-    protected String username;
-
-    protected String password;
-
-    protected List<GrantedAuthority> authorities = new ArrayList<>();
     /**
      * 登录信息
      */
     protected final LoginInfo loginInfo = new LoginInfo();
+    protected Long userId;
+    /**
+     * 用户唯一标识，缓存的key
+     */
+    protected String cachedKey;
+    protected String username;
+    protected String password;
+    protected List<GrantedAuthority> authorities = new ArrayList<>();
 
 
     public BaseLoginUser(Long userId, String username, String password) {
@@ -50,7 +47,6 @@ public class BaseLoginUser implements UserDetails {
 
     /**
      * 设置用户代理信息
-     *
      */
     public void fillLoginInfo() {
         UserAgent userAgent = UserAgent.parseUserAgentString(ServletHolderUtil.getRequest().getHeader("User-Agent"));

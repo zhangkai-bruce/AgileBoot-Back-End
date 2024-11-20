@@ -3,7 +3,6 @@ package com.agileboot.common.enums;
 import cn.hutool.core.convert.Convert;
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode;
-import com.agileboot.common.enums.BasicEnum;
 
 import java.util.Objects;
 
@@ -12,10 +11,10 @@ import java.util.Objects;
  */
 public class BasicEnumUtil {
 
+    public static final String UNKNOWN = "未知";
+
     private BasicEnumUtil() {
     }
-
-    public static final String UNKNOWN = "未知";
 
     public static <E extends Enum<E>> E fromValueSafely(Class<E> enumClass, Object value) {
         E target = null;

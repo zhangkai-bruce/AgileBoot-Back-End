@@ -15,14 +15,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OnlineIpRegionUtil {
 
-    private OnlineIpRegionUtil() {
-    }
-
     /**
      * website for query geography address from ip
      */
     public static final String ADDRESS_QUERY_SITE = "http://whois.pconline.com.cn/ipJson.jsp";
 
+    private OnlineIpRegionUtil() {
+    }
 
     public static IpRegion getIpRegion(String ip) {
         if (StrUtil.isBlank(ip) || IpUtil.isValidIpv6(ip) || !IpUtil.isValidIpv4(ip)) {
@@ -32,7 +31,7 @@ public class OnlineIpRegionUtil {
         if (AgileBootConfig.isAddressEnabled()) {
             try {
                 String rspStr = HttpUtil.get(ADDRESS_QUERY_SITE + "?ip=" + ip + "&json=true",
-                    CharsetUtil.CHARSET_GBK);
+                        CharsetUtil.CHARSET_GBK);
 
                 if (StrUtil.isEmpty(rspStr)) {
                     log.error("获取地理位置异常 {}", ip);

@@ -1,11 +1,11 @@
 package com.agileboot.common.utils.ip;
 
 import cn.hutool.core.lang.Validator;
+import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.regex.Pattern;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * ip校验器

@@ -1,10 +1,5 @@
 package com.agileboot.domain.system.post.model;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode.Business;
 import com.agileboot.domain.system.post.db.SysPostService;
@@ -13,13 +8,16 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 class PostModelTest {
 
-    private final SysPostService postService = mock(SysPostService.class);
-
-    private final PostModelFactory postModelFactory = new PostModelFactory(postService);
-
     private static final long POST_ID = 1L;
+    private final SysPostService postService = mock(SysPostService.class);
+    private final PostModelFactory postModelFactory = new PostModelFactory(postService);
 
     @AfterEach
     public void clean() {

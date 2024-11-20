@@ -214,11 +214,11 @@ public enum ErrorCode implements ErrorCodeInterface {
 
         Business(int code, String msg, String i18nKey) {
             Assert.isTrue(code > 10000 && code < 99999,
-                "错误码code值定义失败，Business错误码code值范围在10000~99099之间，请查看ErrorCode.Business类，当前错误码码为" + name());
+                    "错误码code值定义失败，Business错误码code值范围在10000~99099之间，请查看ErrorCode.Business类，当前错误码码为" + name());
 
             String errorTypeName = this.getClass().getSimpleName();
             Assert.isTrue(i18nKey != null && i18nKey.startsWith(errorTypeName),
-                String.format("错误码i18nKey值定义失败，%s错误码i18nKey值必须以%s开头，当前错误码为%s", errorTypeName, errorTypeName, name()));
+                    String.format("错误码i18nKey值定义失败，%s错误码i18nKey值必须以%s开头，当前错误码为%s", errorTypeName, errorTypeName, name()));
             this.code = code;
             this.msg = msg;
             this.i18nKey = i18nKey;
@@ -259,11 +259,11 @@ public enum ErrorCode implements ErrorCodeInterface {
 
         External(int code, String msg, String i18nKey) {
             Assert.isTrue(code > 1000 && code < 9999,
-                "错误码code值定义失败，External错误码code值范围在1000~9999之间，请查看ErrorCode.External类，当前错误码码为" + name());
+                    "错误码code值定义失败，External错误码code值范围在1000~9999之间，请查看ErrorCode.External类，当前错误码码为" + name());
 
             String errorTypeName = this.getClass().getSimpleName();
             Assert.isTrue(i18nKey != null && i18nKey.startsWith(errorTypeName),
-                String.format("错误码i18nKey值定义失败，%s错误码i18nKey值必须以%s开头，当前错误码为%s", errorTypeName, errorTypeName, name()));
+                    String.format("错误码i18nKey值定义失败，%s错误码i18nKey值必须以%s开头，当前错误码为%s", errorTypeName, errorTypeName, name()));
             this.code = code;
             this.msg = msg;
             this.i18nKey = i18nKey;
@@ -319,11 +319,11 @@ public enum ErrorCode implements ErrorCodeInterface {
 
         Client(int code, String msg, String i18nKey) {
             Assert.isTrue(code > 100 && code < 999,
-                "错误码code值定义失败，Client错误码code值范围在100~999之间，请查看ErrorCode.Client类，当前错误码码为" + name());
+                    "错误码code值定义失败，Client错误码code值范围在100~999之间，请查看ErrorCode.Client类，当前错误码码为" + name());
 
             String errorTypeName = this.getClass().getSimpleName();
             Assert.isTrue(i18nKey != null && i18nKey.startsWith(errorTypeName),
-                String.format("错误码i18nKey值定义失败，%s错误码i18nKey值必须以%s开头，当前错误码为%s", errorTypeName, errorTypeName, name()));
+                    String.format("错误码i18nKey值定义失败，%s错误码i18nKey值必须以%s开头，当前错误码为%s", errorTypeName, errorTypeName, name()));
             this.code = code;
             this.msg = msg;
             this.i18nKey = i18nKey;
@@ -380,11 +380,11 @@ public enum ErrorCode implements ErrorCodeInterface {
 
         Internal(int code, String msg, String i18nKey) {
             Assert.isTrue(code < 100,
-                "错误码code值定义失败，Internal错误码code值范围在100~999之间，请查看ErrorCode.Internal类，当前错误码码为" + name());
+                    "错误码code值定义失败，Internal错误码code值范围在100~999之间，请查看ErrorCode.Internal类，当前错误码码为" + name());
 
             String errorTypeName = this.getClass().getSimpleName();
             Assert.isTrue(i18nKey != null && i18nKey.startsWith(errorTypeName),
-                String.format("错误码i18nKey值定义失败，%s错误码i18nKey值必须以%s开头，当前错误码为%s", errorTypeName, errorTypeName, name()));
+                    String.format("错误码i18nKey值定义失败，%s错误码i18nKey值必须以%s开头，当前错误码为%s", errorTypeName, errorTypeName, name()));
             this.code = code;
             this.msg = msg;
             this.i18nKey = i18nKey;

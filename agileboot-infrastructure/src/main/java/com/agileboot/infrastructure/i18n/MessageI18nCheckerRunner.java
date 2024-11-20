@@ -13,20 +13,20 @@ import org.springframework.stereotype.Component;
 
 /**
  * 检测 未添加到i18n文件(messages.properties)中的message
+ *
  * @author valarchie
  */
 @Component
 @Slf4j
 public class MessageI18nCheckerRunner implements ApplicationRunner {
 
+    public static Object[] allErrorCodes = ArrayUtil.addAll(
+            ErrorCode.Internal.values(),
+            ErrorCode.External.values(),
+            ErrorCode.Client.values(),
+            ErrorCode.Business.values());
     @Value("agileboot.checkI18nKey")
     private String checkI18nKey;
-
-    public static Object[] allErrorCodes = ArrayUtil.addAll(
-        ErrorCode.Internal.values(),
-        ErrorCode.External.values(),
-        ErrorCode.Client.values(),
-        ErrorCode.Business.values());
 
     @Override
     public void run(ApplicationArguments args) {
@@ -45,7 +45,7 @@ public class MessageI18nCheckerRunner implements ApplicationRunner {
                 MessageUtils.message(errorInterface.i18nKey());
             } catch (Exception e) {
                 log.warn("could not find i18n message for:{}  in the file /resources/i18n/messages.properties.",
-                    errorInterface.i18nKey());
+                        errorInterface.i18nKey());
             }
         }
     }

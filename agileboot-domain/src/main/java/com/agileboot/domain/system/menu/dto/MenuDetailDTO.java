@@ -13,6 +13,8 @@ import lombok.EqualsAndHashCode;
 @Data
 public class MenuDetailDTO extends MenuDTO {
 
+    private String permission;
+    private MetaDTO meta;
     public MenuDetailDTO(SysMenuEntity entity) {
         super(entity);
         if (entity == null) {
@@ -23,8 +25,5 @@ public class MenuDetailDTO extends MenuDTO {
         }
         this.permission = entity.getPermission();
     }
-
-    private String permission;
-    private MetaDTO meta;
 
 }

@@ -1,32 +1,29 @@
 package com.agileboot.admin.controller.system;
 
 
+import com.agileboot.admin.customize.aop.accessLog.AccessLog;
 import com.agileboot.common.core.base.BaseController;
 import com.agileboot.common.core.dto.ResponseDTO;
 import com.agileboot.common.core.page.PageDTO;
+import com.agileboot.common.enums.common.BusinessTypeEnum;
 import com.agileboot.common.utils.poi.CustomExcelUtil;
 import com.agileboot.domain.common.command.BulkOperationCommand;
 import com.agileboot.domain.system.log.LogApplicationService;
 import com.agileboot.domain.system.log.dto.LoginLogDTO;
-import com.agileboot.domain.system.log.query.LoginLogQuery;
 import com.agileboot.domain.system.log.dto.OperationLogDTO;
+import com.agileboot.domain.system.log.query.LoginLogQuery;
 import com.agileboot.domain.system.log.query.OperationLogQuery;
-import com.agileboot.admin.customize.aop.accessLog.AccessLog;
-import com.agileboot.common.enums.common.BusinessTypeEnum;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import java.util.List;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 系统访问记录
@@ -93,8 +90,10 @@ public class SysLogsController extends BaseController {
 //                .contentLength(file.length())
 //                .body(resource);
 //    }
+
     /**
      * 可否改成以上的形式 TODO
+     *
      * @param response
      * @param query
      */

@@ -1,17 +1,18 @@
 package com.agileboot.domain.system.menu.model;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.agileboot.common.enums.common.MenuTypeEnum;
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode;
 import com.agileboot.common.exception.error.ErrorCode.Business;
 import com.agileboot.common.utils.jackson.JacksonUtil;
 import com.agileboot.domain.system.menu.command.AddMenuCommand;
 import com.agileboot.domain.system.menu.command.UpdateMenuCommand;
-import com.agileboot.common.enums.common.MenuTypeEnum;
 import com.agileboot.domain.system.menu.db.SysMenuEntity;
 import com.agileboot.domain.system.menu.db.SysMenuService;
-import java.util.Objects;
 import lombok.NoArgsConstructor;
+
+import java.util.Objects;
 
 /**
  * @author valarchie
@@ -64,8 +65,8 @@ public class MenuModel extends SysMenuEntity {
         SysMenuEntity parentMenu = menuService.getById(getParentId());
 
         if (parentMenu != null && getIsButton() && (
-            Objects.equals(parentMenu.getMenuType(), MenuTypeEnum.IFRAME.getValue())
-                || Objects.equals(parentMenu.getMenuType(),MenuTypeEnum.OUTSIDE_LINK_REDIRECT.getValue())
+                Objects.equals(parentMenu.getMenuType(), MenuTypeEnum.IFRAME.getValue())
+                        || Objects.equals(parentMenu.getMenuType(), MenuTypeEnum.OUTSIDE_LINK_REDIRECT.getValue())
         )) {
             throw new ApiException(Business.MENU_NOT_ALLOWED_TO_CREATE_BUTTON_ON_IFRAME_OR_OUT_LINK);
         }
@@ -78,7 +79,7 @@ public class MenuModel extends SysMenuEntity {
         SysMenuEntity parentMenu = menuService.getById(getParentId());
 
         if (parentMenu != null && !getIsButton() && (
-            !Objects.equals(parentMenu.getMenuType(), MenuTypeEnum.CATALOG.getValue())
+                !Objects.equals(parentMenu.getMenuType(), MenuTypeEnum.CATALOG.getValue())
         )) {
             throw new ApiException(Business.MENU_ONLY_ALLOWED_TO_CREATE_SUB_MENU_IN_CATALOG);
         }

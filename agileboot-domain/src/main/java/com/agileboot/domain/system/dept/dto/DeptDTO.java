@@ -1,16 +1,28 @@
 package com.agileboot.domain.system.dept.dto;
 
-import com.agileboot.common.enums.common.StatusEnum;
 import com.agileboot.common.enums.BasicEnumUtil;
+import com.agileboot.common.enums.common.StatusEnum;
 import com.agileboot.domain.system.dept.db.SysDeptEntity;
-import java.util.Date;
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * @author valarchie
  */
 @Data
 public class DeptDTO {
+
+    private Long id;
+    private Long parentId;
+    private String deptName;
+    private Integer orderNum;
+    private String leaderName;
+    private String phone;
+    private String email;
+    private Integer status;
+    private String statusStr;
+    private Date createTime;
 
     public DeptDTO(SysDeptEntity entity) {
         if (entity != null) {
@@ -26,26 +38,5 @@ public class DeptDTO {
             this.statusStr = BasicEnumUtil.getDescriptionByValue(StatusEnum.class, entity.getStatus());
         }
     }
-
-
-    private Long id;
-
-    private Long parentId;
-
-    private String deptName;
-
-    private Integer orderNum;
-
-    private String leaderName;
-
-    private String phone;
-
-    private String email;
-
-    private Integer status;
-
-    private String statusStr;
-
-    private Date createTime;
 
 }

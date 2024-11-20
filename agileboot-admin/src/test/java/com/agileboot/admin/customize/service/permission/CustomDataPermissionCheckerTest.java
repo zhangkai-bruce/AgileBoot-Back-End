@@ -1,18 +1,18 @@
 package com.agileboot.admin.customize.service.permission;
 
+import com.agileboot.admin.customize.service.permission.model.DataCondition;
+import com.agileboot.admin.customize.service.permission.model.checker.CustomDataPermissionChecker;
+import com.agileboot.domain.system.dept.db.SysDeptService;
+import com.agileboot.infrastructure.user.web.RoleInfo;
+import com.agileboot.infrastructure.user.web.SystemLoginUser;
+import org.apache.commons.collections4.SetUtils;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import com.agileboot.admin.customize.service.permission.model.checker.CustomDataPermissionChecker;
-import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import com.agileboot.infrastructure.user.web.RoleInfo;
-import com.agileboot.admin.customize.service.permission.model.DataCondition;
-import com.agileboot.domain.system.dept.db.SysDeptService;
-import org.apache.commons.collections4.SetUtils;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 class CustomDataPermissionCheckerTest {
 
@@ -26,15 +26,15 @@ class CustomDataPermissionCheckerTest {
 
     @Test
     void testCheckWhenParameterNull() {
-            CustomDataPermissionChecker customChecker = new CustomDataPermissionChecker(deptService);
+        CustomDataPermissionChecker customChecker = new CustomDataPermissionChecker(deptService);
 
-            boolean check1 = customChecker.check(null, null);
-            boolean check2 = customChecker.check(loginUser, null);
-            boolean check3 = customChecker.check(null, new DataCondition());
+        boolean check1 = customChecker.check(null, null);
+        boolean check2 = customChecker.check(loginUser, null);
+        boolean check3 = customChecker.check(null, new DataCondition());
 
-            assertFalse(check1);
-            assertFalse(check2);
-            assertFalse(check3);
+        assertFalse(check1);
+        assertFalse(check2);
+        assertFalse(check3);
     }
 
     @Test

@@ -2,20 +2,21 @@ package com.agileboot.domain.system.log;
 
 import com.agileboot.common.core.page.PageDTO;
 import com.agileboot.domain.common.command.BulkOperationCommand;
-import com.agileboot.domain.system.log.dto.LoginLogDTO;
-import com.agileboot.domain.system.log.query.LoginLogQuery;
-import com.agileboot.domain.system.log.dto.OperationLogDTO;
-import com.agileboot.domain.system.log.query.OperationLogQuery;
 import com.agileboot.domain.system.log.db.SysLoginInfoEntity;
-import com.agileboot.domain.system.log.db.SysOperationLogEntity;
 import com.agileboot.domain.system.log.db.SysLoginInfoService;
+import com.agileboot.domain.system.log.db.SysOperationLogEntity;
 import com.agileboot.domain.system.log.db.SysOperationLogService;
+import com.agileboot.domain.system.log.dto.LoginLogDTO;
+import com.agileboot.domain.system.log.dto.OperationLogDTO;
+import com.agileboot.domain.system.log.query.LoginLogQuery;
+import com.agileboot.domain.system.log.query.OperationLogQuery;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author valarchie

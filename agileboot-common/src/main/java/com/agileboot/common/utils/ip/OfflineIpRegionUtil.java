@@ -16,9 +16,6 @@ public class OfflineIpRegionUtil {
 
     private static Searcher searcher;
 
-    private OfflineIpRegionUtil() {
-    }
-
     static {
         InputStream resourceAsStream = OfflineIpRegionUtil.class.getResourceAsStream("/ip2region.xdb");
 
@@ -38,10 +35,13 @@ public class OfflineIpRegionUtil {
 
     }
 
+    private OfflineIpRegionUtil() {
+    }
+
     public static IpRegion getIpRegion(String ip) {
         try {
             if (StrUtil.isBlank(ip) || IpUtil.isValidIpv6(ip)
-                || !IpUtil.isValidIpv4(ip)) {
+                    || !IpUtil.isValidIpv4(ip)) {
                 return null;
             }
 

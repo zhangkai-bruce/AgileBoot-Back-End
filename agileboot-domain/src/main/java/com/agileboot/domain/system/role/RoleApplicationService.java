@@ -4,30 +4,31 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.agileboot.common.core.page.PageDTO;
 import com.agileboot.domain.common.cache.CacheCenter;
+import com.agileboot.domain.system.menu.db.SysMenuService;
 import com.agileboot.domain.system.role.command.AddRoleCommand;
 import com.agileboot.domain.system.role.command.UpdateDataScopeCommand;
 import com.agileboot.domain.system.role.command.UpdateRoleCommand;
 import com.agileboot.domain.system.role.command.UpdateStatusCommand;
+import com.agileboot.domain.system.role.db.SysRoleEntity;
+import com.agileboot.domain.system.role.db.SysRoleService;
 import com.agileboot.domain.system.role.dto.RoleDTO;
 import com.agileboot.domain.system.role.model.RoleModel;
 import com.agileboot.domain.system.role.model.RoleModelFactory;
 import com.agileboot.domain.system.role.query.AllocatedRoleQuery;
 import com.agileboot.domain.system.role.query.RoleQuery;
 import com.agileboot.domain.system.role.query.UnallocatedRoleQuery;
+import com.agileboot.domain.system.user.db.SysUserEntity;
+import com.agileboot.domain.system.user.db.SysUserService;
 import com.agileboot.domain.system.user.dto.UserDTO;
 import com.agileboot.domain.system.user.model.UserModel;
 import com.agileboot.domain.system.user.model.UserModelFactory;
-import com.agileboot.domain.system.role.db.SysRoleEntity;
-import com.agileboot.domain.system.user.db.SysUserEntity;
-import com.agileboot.domain.system.menu.db.SysMenuService;
-import com.agileboot.domain.system.role.db.SysRoleService;
-import com.agileboot.domain.system.user.db.SysUserService;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author valarchie
@@ -57,7 +58,7 @@ public class RoleApplicationService {
         SysRoleEntity byId = roleService.getById(roleId);
         RoleDTO roleDTO = new RoleDTO(byId);
         List<Long> selectedDeptList = StrUtil.split(byId.getDeptIdSet(), ",")
-            .stream().filter(StrUtil::isNotEmpty).map(Long::new).collect(Collectors.toList());
+                .stream().filter(StrUtil::isNotEmpty).map(Long::new).collect(Collectors.toList());
         roleDTO.setSelectedDeptList(selectedDeptList);
         roleDTO.setSelectedMenuList(menuService.getMenuIdsByRoleId(roleId));
         return roleDTO;

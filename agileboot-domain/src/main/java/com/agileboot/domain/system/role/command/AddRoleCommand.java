@@ -1,12 +1,13 @@
 package com.agileboot.domain.system.role.command;
 
 import com.agileboot.common.annotation.ExcelColumn;
-import java.util.List;
+import lombok.Data;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
-import lombok.Data;
+import java.util.List;
 
 /**
  * @author valarchie

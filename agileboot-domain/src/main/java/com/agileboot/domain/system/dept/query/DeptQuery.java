@@ -25,7 +25,7 @@ public class DeptQuery extends AbstractQuery<SysDeptEntity> {
         // TODO parentId 这个似乎没使用
         return new QueryWrapper<SysDeptEntity>()
 //            .eq(status != null, "status", status)
-            .eq(parentId != null, "parent_id", parentId);
+                .eq(parentId != null, "parent_id", parentId);
 //            .like(StrUtil.isNotEmpty(deptName), "dept_name", deptName);
 //            .and(deptId != null && isExcludeCurrentDept, o ->
 //                o.ne("dept_id", deptId)

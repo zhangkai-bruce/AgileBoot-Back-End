@@ -1,6 +1,5 @@
 package com.agileboot.domain.system.post;
 
-import cn.hutool.core.util.StrUtil;
 import com.agileboot.common.core.page.PageDTO;
 import com.agileboot.domain.common.command.BulkOperationCommand;
 import com.agileboot.domain.system.post.command.AddPostCommand;
@@ -12,10 +11,11 @@ import com.agileboot.domain.system.post.model.PostModel;
 import com.agileboot.domain.system.post.model.PostModelFactory;
 import com.agileboot.domain.system.post.query.PostQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author valarchie
@@ -36,6 +36,7 @@ public class PostApplicationService {
 
     /**
      * 查询满足条件的所有岗位，不分页
+     *
      * @param query 查询条件
      * @return 满足查询条件的岗位列表
      * @author Kevin Zhang

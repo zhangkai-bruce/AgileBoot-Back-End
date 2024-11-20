@@ -4,9 +4,10 @@ import com.agileboot.domain.system.role.db.SysRoleMenuEntity;
 import com.agileboot.domain.system.role.db.SysRoleMenuMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -38,8 +39,8 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
     public boolean isMenuNameDuplicated(String menuName, Long menuId, Long parentId) {
         QueryWrapper<SysMenuEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("menu_name", menuName)
-            .ne(menuId != null, "menu_id", menuId)
-            .eq(parentId != null, "parent_id", parentId);
+                .ne(menuId != null, "menu_id", menuId)
+                .eq(parentId != null, "parent_id", parentId);
         return this.baseMapper.exists(queryWrapper);
     }
 
@@ -63,7 +64,6 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
         queryWrapper.eq("menu_id", menuId);
         return roleMenuMapper.exists(queryWrapper);
     }
-
 
 
     @Override

@@ -70,6 +70,7 @@ public class CaptchaMathTextCreator extends DefaultTextCreator {
                 }
             }
         };
+
         public abstract int generateMathExpression(int x, int y, StringBuilder expression);
     }
 }

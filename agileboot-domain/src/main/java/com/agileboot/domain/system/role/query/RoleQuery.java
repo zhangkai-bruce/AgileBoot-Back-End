@@ -24,9 +24,9 @@ public class RoleQuery extends AbstractPageQuery<SysRoleEntity> {
     @Override
     public QueryWrapper<SysRoleEntity> addQueryCondition() {
         QueryWrapper<SysRoleEntity> queryWrapper = new QueryWrapper<SysRoleEntity>()
-            .eq(status != null, "status", status)
-            .eq(StrUtil.isNotEmpty(roleKey), "role_key", roleKey)
-            .like(StrUtil.isNotEmpty(roleName), "role_name", roleName);
+                .eq(status != null, "status", status)
+                .eq(StrUtil.isNotEmpty(roleKey), "role_key", roleKey)
+                .like(StrUtil.isNotEmpty(roleName), "role_name", roleName);
 
 //        this.addTimeCondition(queryWrapper, "create_time");
 

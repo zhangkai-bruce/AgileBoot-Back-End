@@ -1,8 +1,8 @@
 package com.agileboot.common.enums.common;
 
+import com.agileboot.common.enums.DictionaryEnum;
 import com.agileboot.common.enums.dictionary.CssTag;
 import com.agileboot.common.enums.dictionary.Dictionary;
-import com.agileboot.common.enums.DictionaryEnum;
 
 /**
  * 对应sys_operation_log的business_type

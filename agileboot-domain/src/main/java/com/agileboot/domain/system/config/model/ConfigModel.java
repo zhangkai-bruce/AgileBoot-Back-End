@@ -9,11 +9,12 @@ import com.agileboot.common.exception.error.ErrorCode;
 import com.agileboot.domain.system.config.command.ConfigUpdateCommand;
 import com.agileboot.domain.system.config.db.SysConfigEntity;
 import com.agileboot.domain.system.config.db.SysConfigService;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * @author valarchie
@@ -34,8 +35,8 @@ public class ConfigModel extends SysConfigEntity {
         BeanUtil.copyProperties(entity, this);
 
         List<String> options =
-            JSONUtil.isTypeJSONArray(entity.getConfigOptions()) ? JSONUtil.toList(entity.getConfigOptions(),
-                String.class) : ListUtil.empty();
+                JSONUtil.isTypeJSONArray(entity.getConfigOptions()) ? JSONUtil.toList(entity.getConfigOptions(),
+                        String.class) : ListUtil.empty();
 
         this.configOptionSet = new HashSet<>(options);
 

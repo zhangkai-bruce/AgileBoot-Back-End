@@ -8,20 +8,16 @@ import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode;
 import com.agileboot.domain.common.cache.RedisCacheService;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
-import io.jsonwebtoken.UnsupportedJwtException;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import javax.servlet.http.HttpServletRequest;
+import io.jsonwebtoken.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * token验证处理
@@ -34,18 +30,17 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class TokenService {
 
+    private final RedisCacheService redisCache;
     /**
      * 自定义令牌标识
      */
     @Value("${token.header}")
     private String header;
-
     /**
      * 令牌秘钥
      */
     @Value("${token.secret}")
     private String secret;
-
     /**
      * 自动刷新token的时间，当过期时间不足autoRefreshTime的值的时候，会触发刷新用户登录缓存的时间
      * 比如这个值是20,   用户是8点登录的， 8点半缓存会过期， 当过8.10分的时候，就少于20分钟了，便触发
@@ -53,8 +48,6 @@ public class TokenService {
      */
     @Value("${token.autoRefreshTime}")
     private long autoRefreshTime;
-
-    private final RedisCacheService redisCache;
 
     /**
      * 获取用户身份信息
@@ -99,6 +92,7 @@ public class TokenService {
 
     /**
      * 当超过20分钟，自动刷新token
+     *
      * @param loginUser 登录用户
      */
     public void refreshToken(SystemLoginUser loginUser) {
@@ -119,8 +113,8 @@ public class TokenService {
      */
     private String generateToken(Map<String, Object> claims) {
         return Jwts.builder()
-            .setClaims(claims)
-            .signWith(SignatureAlgorithm.HS512, secret).compact();
+                .setClaims(claims)
+                .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
 
     /**
@@ -131,9 +125,9 @@ public class TokenService {
      */
     private Claims parseToken(String token) {
         return Jwts.parser()
-            .setSigningKey(secret)
-            .parseClaimsJws(token)
-            .getBody();
+                .setSigningKey(secret)
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     /**

@@ -4,17 +4,18 @@ import com.agileboot.common.core.page.PageDTO;
 import com.agileboot.domain.common.command.BulkOperationCommand;
 import com.agileboot.domain.system.notice.command.NoticeAddCommand;
 import com.agileboot.domain.system.notice.command.NoticeUpdateCommand;
+import com.agileboot.domain.system.notice.db.SysNoticeEntity;
+import com.agileboot.domain.system.notice.db.SysNoticeService;
 import com.agileboot.domain.system.notice.dto.NoticeDTO;
 import com.agileboot.domain.system.notice.model.NoticeModel;
 import com.agileboot.domain.system.notice.model.NoticeModelFactory;
 import com.agileboot.domain.system.notice.query.NoticeQuery;
-import com.agileboot.domain.system.notice.db.SysNoticeEntity;
-import com.agileboot.domain.system.notice.db.SysNoticeService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author valarchie
@@ -62,8 +63,6 @@ public class NoticeApplicationService {
     public void deleteNotice(BulkOperationCommand<Integer> deleteCommand) {
         noticeService.removeBatchByIds(deleteCommand.getIds());
     }
-
-
 
 
 }

@@ -1,8 +1,9 @@
 package com.agileboot.domain.system.monitor.dto;
 
+import lombok.Data;
+
 import java.util.List;
 import java.util.Properties;
-import lombok.Data;
 
 
 /**

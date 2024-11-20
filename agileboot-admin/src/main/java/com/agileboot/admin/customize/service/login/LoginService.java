@@ -10,8 +10,14 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.extra.servlet.ServletUtil;
+import com.agileboot.admin.customize.async.AsyncTaskFactory;
+import com.agileboot.admin.customize.service.login.command.LoginCommand;
+import com.agileboot.admin.customize.service.login.dto.CaptchaDTO;
+import com.agileboot.admin.customize.service.login.dto.ConfigDTO;
 import com.agileboot.common.config.AgileBootConfig;
 import com.agileboot.common.constant.Constants.Captcha;
+import com.agileboot.common.enums.common.ConfigKeyEnum;
+import com.agileboot.common.enums.common.LoginStatusEnum;
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode;
 import com.agileboot.common.exception.error.ErrorCode.Business;
@@ -20,18 +26,10 @@ import com.agileboot.common.utils.i18n.MessageUtils;
 import com.agileboot.domain.common.cache.GuavaCacheService;
 import com.agileboot.domain.common.cache.MapCache;
 import com.agileboot.domain.common.cache.RedisCacheService;
-import com.agileboot.admin.customize.async.AsyncTaskFactory;
-import com.agileboot.infrastructure.thread.ThreadPoolManager;
-import com.agileboot.admin.customize.service.login.dto.CaptchaDTO;
-import com.agileboot.admin.customize.service.login.dto.ConfigDTO;
-import com.agileboot.admin.customize.service.login.command.LoginCommand;
-import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import com.agileboot.common.enums.common.ConfigKeyEnum;
-import com.agileboot.common.enums.common.LoginStatusEnum;
 import com.agileboot.domain.system.user.db.SysUserEntity;
+import com.agileboot.infrastructure.thread.ThreadPoolManager;
+import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.google.code.kaptcha.Producer;
-import java.awt.image.BufferedImage;
-import javax.annotation.Resource;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -42,6 +40,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FastByteArrayOutputStream;
+
+import javax.annotation.Resource;
+import java.awt.image.BufferedImage;
 
 /**
  * 登录校验方法
@@ -84,10 +85,10 @@ public class LoginService {
         try {
             // 该方法会去调用UserDetailsServiceImpl#loadUserByUsername  校验用户名和密码  认证鉴权
             authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginCommand.getUsername(), decryptPassword));
+                    loginCommand.getUsername(), decryptPassword));
         } catch (BadCredentialsException e) {
             ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(loginCommand.getUsername(), LoginStatusEnum.LOGIN_FAIL,
-                MessageUtils.message("Business.LOGIN_WRONG_USER_PASSWORD")));
+                    MessageUtils.message("Business.LOGIN_WRONG_USER_PASSWORD")));
             throw new ApiException(e, ErrorCode.Business.LOGIN_WRONG_USER_PASSWORD);
         } catch (AuthenticationException e) {
             ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(loginCommand.getUsername(), LoginStatusEnum.LOGIN_FAIL, e.getMessage()));
@@ -174,8 +175,8 @@ public class LoginService {
     /**
      * 校验验证码
      *
-     * @param username 用户名
-     * @param captchaCode 验证码
+     * @param username       用户名
+     * @param captchaCode    验证码
      * @param captchaCodeKey 验证码对应的缓存key
      */
     public void validateCaptcha(String username, String captchaCode, String captchaCodeKey) {
@@ -183,23 +184,24 @@ public class LoginService {
         redisCache.captchaCache.delete(captchaCodeKey);
         if (captcha == null) {
             ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(username, LoginStatusEnum.LOGIN_FAIL,
-                ErrorCode.Business.LOGIN_CAPTCHA_CODE_EXPIRE.message()));
+                    ErrorCode.Business.LOGIN_CAPTCHA_CODE_EXPIRE.message()));
             throw new ApiException(ErrorCode.Business.LOGIN_CAPTCHA_CODE_EXPIRE);
         }
         if (!captchaCode.equalsIgnoreCase(captcha)) {
             ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(username, LoginStatusEnum.LOGIN_FAIL,
-                ErrorCode.Business.LOGIN_CAPTCHA_CODE_WRONG.message()));
+                    ErrorCode.Business.LOGIN_CAPTCHA_CODE_WRONG.message()));
             throw new ApiException(ErrorCode.Business.LOGIN_CAPTCHA_CODE_WRONG);
         }
     }
 
     /**
      * 记录登录信息
+     *
      * @param loginUser 登录用户
      */
     public void recordLoginInfo(SystemLoginUser loginUser) {
         ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(loginUser.getUsername(), LoginStatusEnum.LOGIN_SUCCESS,
-            LoginStatusEnum.LOGIN_SUCCESS.description()));
+                LoginStatusEnum.LOGIN_SUCCESS.description()));
 
         SysUserEntity entity = redisCache.userCache.getObjectById(loginUser.getUserId());
 
@@ -210,7 +212,7 @@ public class LoginService {
 
     public String decryptPassword(String originalPassword) {
         byte[] decryptBytes = SecureUtil.rsa(AgileBootConfig.getRsaPrivateKey(), null)
-            .decrypt(Base64.decode(originalPassword), KeyType.PrivateKey);
+                .decrypt(Base64.decode(originalPassword), KeyType.PrivateKey);
 
         return StrUtil.str(decryptBytes, CharsetUtil.CHARSET_UTF_8);
     }

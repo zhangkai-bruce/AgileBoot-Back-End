@@ -25,7 +25,8 @@ public interface SysDeptService extends IService<SysDeptEntity> {
 
     /**
      * 检测部门底下是否还有正在使用中的子部门
-     * @param deptId 部门id
+     *
+     * @param deptId  部门id
      * @param enabled 部门是否开启
      * @return 结果
      */
@@ -33,14 +34,16 @@ public interface SysDeptService extends IService<SysDeptEntity> {
 
     /**
      * 是否是目标部门的子部门
+     *
      * @param parentId 目标部门id
-     * @param childId 子部门id
+     * @param childId  子部门id
      * @return 校验结果
      */
     boolean isChildOfTheDept(Long parentId, Long childId);
 
     /**
      * 检测该部门是否已有用户使用
+     *
      * @param deptId 部门id
      * @return 校验结果
      */

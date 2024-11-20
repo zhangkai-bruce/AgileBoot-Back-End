@@ -11,6 +11,9 @@ import lombok.Data;
 @Data
 public class UserProfileDTO {
 
+    private UserDTO user;
+    private String roleName;
+    private String postName;
     public UserProfileDTO(SysUserEntity userEntity, SysPostEntity postEntity, SysRoleEntity roleEntity) {
         if (userEntity != null) {
             this.user = new UserDTO(userEntity);
@@ -24,9 +27,5 @@ public class UserProfileDTO {
             this.roleName = roleEntity.getRoleName();
         }
     }
-
-    private UserDTO user;
-    private String roleName;
-    private String postName;
 
 }

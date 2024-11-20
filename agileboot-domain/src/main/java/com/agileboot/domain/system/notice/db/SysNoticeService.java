@@ -24,6 +24,6 @@ public interface SysNoticeService extends IService<SysNoticeEntity> {
      * @return 分页处理后的公告列表
      */
     Page<SysNoticeEntity> getNoticeList(Page<SysNoticeEntity> page,
-        @Param(Constants.WRAPPER) Wrapper<SysNoticeEntity> queryWrapper);
+                                        @Param(Constants.WRAPPER) Wrapper<SysNoticeEntity> queryWrapper);
 
 }

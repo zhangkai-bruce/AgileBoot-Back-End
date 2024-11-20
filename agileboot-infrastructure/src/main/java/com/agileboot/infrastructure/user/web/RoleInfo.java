@@ -1,10 +1,11 @@
 package com.agileboot.infrastructure.user.web;
 
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.collections4.SetUtils;
+
+import java.util.Set;
 
 /**
  * @author valarchie
@@ -20,19 +21,6 @@ public class RoleInfo {
     public static final String ALL_PERMISSIONS = "*:*:*";
 
     public static final Set<String> ADMIN_PERMISSIONS = SetUtils.hashSet(ALL_PERMISSIONS);
-
-
-    public RoleInfo(Long roleId, String roleKey, DataScopeEnum dataScope, Set<Long> deptIdSet,
-        Set<String> menuPermissions, Set<Long> menuIds) {
-        this.roleId = roleId;
-        this.roleKey = roleKey;
-        this.dataScope = dataScope;
-        this.deptIdSet = deptIdSet;
-        this.menuPermissions = menuPermissions != null ? menuPermissions : SetUtils.emptySet();
-        this.menuIds = menuIds != null ? menuIds : SetUtils.emptySet();
-    }
-
-
     private Long roleId;
     private String roleName;
     private DataScopeEnum dataScope;
@@ -40,5 +28,14 @@ public class RoleInfo {
     private String roleKey;
     private Set<String> menuPermissions;
     private Set<Long> menuIds;
+    public RoleInfo(Long roleId, String roleKey, DataScopeEnum dataScope, Set<Long> deptIdSet,
+                    Set<String> menuPermissions, Set<Long> menuIds) {
+        this.roleId = roleId;
+        this.roleKey = roleKey;
+        this.dataScope = dataScope;
+        this.deptIdSet = deptIdSet;
+        this.menuPermissions = menuPermissions != null ? menuPermissions : SetUtils.emptySet();
+        this.menuIds = menuIds != null ? menuIds : SetUtils.emptySet();
+    }
 
 }

@@ -3,9 +3,10 @@ package com.agileboot.domain.system.role.dto;
 import com.agileboot.common.annotation.ExcelColumn;
 import com.agileboot.common.annotation.ExcelSheet;
 import com.agileboot.domain.system.role.db.SysRoleEntity;
+import lombok.Data;
+
 import java.util.Date;
 import java.util.List;
-import lombok.Data;
 
 /**
  * @author valarchie
@@ -13,19 +14,6 @@ import lombok.Data;
 @Data
 @ExcelSheet(name = "角色列表")
 public class RoleDTO {
-
-    public RoleDTO(SysRoleEntity entity) {
-        if (entity != null) {
-            this.roleId = entity.getRoleId();
-            this.roleName = entity.getRoleName();
-            this.roleKey = entity.getRoleKey();
-            this.roleSort = entity.getRoleSort();
-            this.createTime = entity.getCreateTime();
-            this.status = entity.getStatus();
-            this.remark = entity.getRemark();
-            this.dataScope = entity.getDataScope();
-        }
-    }
 
     @ExcelColumn(name = "角色ID")
     private Long roleId;
@@ -43,8 +31,19 @@ public class RoleDTO {
     private Date createTime;
     @ExcelColumn(name = "数据范围")
     private Integer dataScope;
-
     private List<Long> selectedMenuList;
-
     private List<Long> selectedDeptList;
+
+    public RoleDTO(SysRoleEntity entity) {
+        if (entity != null) {
+            this.roleId = entity.getRoleId();
+            this.roleName = entity.getRoleName();
+            this.roleKey = entity.getRoleKey();
+            this.roleSort = entity.getRoleSort();
+            this.createTime = entity.getCreateTime();
+            this.status = entity.getStatus();
+            this.remark = entity.getRemark();
+            this.dataScope = entity.getDataScope();
+        }
+    }
 }

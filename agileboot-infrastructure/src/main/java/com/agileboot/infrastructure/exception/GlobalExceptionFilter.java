@@ -5,19 +5,17 @@ import cn.hutool.json.JSONUtil;
 import com.agileboot.common.core.dto.ResponseDTO;
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode.Internal;
-import java.io.IOException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import lombok.extern.slf4j.Slf4j;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import java.io.IOException;
 
 
 /**
  * 异常过滤器，因为配置的全局异常捕获器只能捕获MVC框架的异常
  * 不能捕获filter的异常
+ *
  * @author valarchie
  */
 @Slf4j

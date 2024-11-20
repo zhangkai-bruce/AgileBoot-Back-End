@@ -1,33 +1,31 @@
 package com.agileboot.domain.system.user.model;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode.Business;
 import com.agileboot.domain.system.dept.model.DeptModelFactory;
 import com.agileboot.domain.system.post.model.PostModelFactory;
 import com.agileboot.domain.system.role.model.RoleModelFactory;
 import com.agileboot.domain.system.user.command.UpdateUserPasswordCommand;
+import com.agileboot.domain.system.user.db.SysUserService;
 import com.agileboot.infrastructure.user.AuthenticationUtils;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import com.agileboot.domain.system.user.db.SysUserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 class UserModelTest {
 
+    private static final long USER_ID = 1L;
+    private static final long ADMIN_USER_ID = 1L;
     private final SysUserService userService = mock(SysUserService.class);
     private final PostModelFactory postModelFactory = mock(PostModelFactory.class);
     private final DeptModelFactory deptModelFactory = mock(DeptModelFactory.class);
     private final RoleModelFactory roleModelFactory = mock(RoleModelFactory.class);
-
     private final UserModelFactory userModelFactory = new UserModelFactory(userService, postModelFactory,
-        deptModelFactory, roleModelFactory);
-
-    private static final long USER_ID = 1L;
-    private static final long ADMIN_USER_ID = 1L;
+            deptModelFactory, roleModelFactory);
 
     @Test
     void testCheckUsernameIsUnique() {

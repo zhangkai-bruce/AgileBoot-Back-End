@@ -1,11 +1,12 @@
 package com.agileboot.common.utils.jackson;
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import lombok.Data;
 
 /**
  * @author duanxinyuan

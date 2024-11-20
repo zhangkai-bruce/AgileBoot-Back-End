@@ -1,14 +1,15 @@
 package com.agileboot.integrationTest.db;
 
-import com.agileboot.integrationTest.IntegrationTestApplication;
 import com.agileboot.domain.system.role.db.SysRoleService;
-import javax.annotation.Resource;
+import com.agileboot.integrationTest.IntegrationTestApplication;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.annotation.Resource;
 
 @SpringBootTest(classes = IntegrationTestApplication.class)
 @RunWith(SpringRunner.class)
@@ -42,7 +43,6 @@ class SysRoleServiceImplTest {
         Assertions.assertFalse(updateWithSame);
         Assertions.assertFalse(addWithoutSame);
     }
-
 
 
     @Test

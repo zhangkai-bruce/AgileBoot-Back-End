@@ -2,9 +2,10 @@ package com.agileboot.domain.system.user.dto;
 
 import com.agileboot.domain.system.post.dto.PostDTO;
 import com.agileboot.domain.system.role.dto.RoleDTO;
+import lombok.Data;
+
 import java.util.List;
 import java.util.Set;
-import lombok.Data;
 
 /**
  * @author valarchie

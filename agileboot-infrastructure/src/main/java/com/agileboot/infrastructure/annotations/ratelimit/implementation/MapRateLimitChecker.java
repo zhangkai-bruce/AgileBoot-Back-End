@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class MapRateLimitChecker extends AbstractRateLimitChecker{
+public class MapRateLimitChecker extends AbstractRateLimitChecker {
 
     /**
      * 最大仅支持4096个key   超出这个key  限流将可能失效
@@ -29,7 +29,7 @@ public class MapRateLimitChecker extends AbstractRateLimitChecker{
         String combinedKey = rateLimit.limitType().generateCombinedKey(rateLimit);
 
         RateLimiter rateLimiter = cache.get(combinedKey,
-            () -> RateLimiter.create((double) rateLimit.maxCount() / rateLimit.time())
+                () -> RateLimiter.create((double) rateLimit.maxCount() / rateLimit.time())
         );
 
         if (!rateLimiter.tryAcquire()) {

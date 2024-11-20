@@ -42,6 +42,7 @@ public interface SysMenuService extends IService<SysMenuEntity> {
 
     /**
      * 是否存在菜单子节点
+     *
      * @param menuId 菜单ID
      * @return 结果 true 存在 false 不存在
      */
@@ -49,11 +50,11 @@ public interface SysMenuService extends IService<SysMenuEntity> {
 
     /**
      * 查询菜单是否存在角色
+     *
      * @param menuId 菜单ID
      * @return 结果 true 存在 false 不存在
      */
     boolean isMenuAssignToRoles(Long menuId);
-
 
 
 }

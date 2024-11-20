@@ -1,11 +1,12 @@
 package com.agileboot.common.enums.common;
 
+import com.agileboot.common.enums.DictionaryEnum;
 import com.agileboot.common.enums.dictionary.CssTag;
 import com.agileboot.common.enums.dictionary.Dictionary;
-import com.agileboot.common.enums.DictionaryEnum;
 
 /**
  * 用户状态
+ *
  * @author valarchie
  */
 // TODO 表记得改成LoginLog

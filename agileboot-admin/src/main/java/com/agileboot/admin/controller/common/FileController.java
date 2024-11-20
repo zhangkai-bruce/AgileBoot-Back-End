@@ -14,9 +14,6 @@ import com.agileboot.common.utils.jackson.JacksonUtil;
 import com.agileboot.domain.common.dto.UploadDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import java.util.ArrayList;
-import java.util.List;
-import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -28,9 +25,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 通用请求处理
  * TODO 需要重构
+ *
  * @author valarchie
  */
 @Tag(name = "上传API", description = "上传相关接口")
@@ -43,6 +45,7 @@ public class FileController {
     /**
      * 通用下载请求
      * download接口  其实不是很有必要
+     *
      * @param fileName 文件名称
      */
     @Operation(summary = "下载文件")
@@ -52,7 +55,7 @@ public class FileController {
             if (!FileUploadUtils.isAllowDownload(fileName)) {
                 // 返回类型是ResponseEntity 不能捕获异常， 需要手动将错误填到 ResponseEntity
                 ResponseDTO<Object> fail = ResponseDTO.fail(
-                    new ApiException(Business.COMMON_FILE_NOT_ALLOWED_TO_DOWNLOAD, fileName));
+                        new ApiException(Business.COMMON_FILE_NOT_ALLOWED_TO_DOWNLOAD, fileName));
                 return new ResponseEntity<>(JacksonUtil.to(fail).getBytes(), null, HttpStatus.OK);
             }
 
@@ -84,14 +87,14 @@ public class FileController {
         String url = ServletHolderUtil.getContextUrl() + fileName;
 
         UploadDTO uploadDTO = UploadDTO.builder()
-            // 全路径
-            .url(url)
-            // 相对路径
-            .fileName(fileName)
-            // 新生成的文件名
-            .newFileName(FileNameUtil.getName(fileName))
-            // 原始的文件名
-            .originalFilename(file.getOriginalFilename()).build();
+                // 全路径
+                .url(url)
+                // 相对路径
+                .fileName(fileName)
+                // 新生成的文件名
+                .newFileName(FileNameUtil.getName(fileName))
+                // 原始的文件名
+                .originalFilename(file.getOriginalFilename()).build();
 
         return ResponseDTO.ok(uploadDTO);
     }
@@ -114,10 +117,10 @@ public class FileController {
                 String fileName = FileUploadUtils.upload(UploadSubDir.UPLOAD_PATH, file);
                 String url = ServletHolderUtil.getContextUrl() + fileName;
                 UploadDTO uploadDTO = UploadDTO.builder()
-                    .url(url)
-                    .fileName(fileName)
-                    .newFileName(FileNameUtil.getName(fileName))
-                    .originalFilename(file.getOriginalFilename()).build();
+                        .url(url)
+                        .fileName(fileName)
+                        .newFileName(FileNameUtil.getName(fileName))
+                        .originalFilename(file.getOriginalFilename()).build();
 
                 uploads.add(uploadDTO);
 

@@ -1,16 +1,17 @@
 package com.agileboot.infrastructure.config;
 
 import com.agileboot.infrastructure.security.xss.JsonHtmlXssTrimSerializer;
-import java.util.TimeZone;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+
+import java.util.TimeZone;
 
 /**
  * @author valarchie
  */
 @Configuration
-public class JacksonConfig implements Jackson2ObjectMapperBuilderCustomizer{
+public class JacksonConfig implements Jackson2ObjectMapperBuilderCustomizer {
 
 //    这种配置方式会覆盖 yml中的jackson配置， 使用下面的customize配置则不会
 //    @Bean

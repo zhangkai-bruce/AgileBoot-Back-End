@@ -6,19 +6,15 @@ import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode;
 import com.agileboot.domain.common.cache.RedisCacheService;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
-import io.jsonwebtoken.UnsupportedJwtException;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
+import io.jsonwebtoken.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * token验证处理
@@ -31,19 +27,17 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class JwtTokenService {
 
+    private final RedisCacheService redisCache;
     /**
      * 自定义令牌标识
      */
     @Value("${token.header}")
     private String header;
-
     /**
      * 令牌秘钥
      */
     @Value("${token.secret}")
     private String secret;
-
-    private final RedisCacheService redisCache;
 
     /**
      * 获取用户身份信息
@@ -73,8 +67,6 @@ public class JwtTokenService {
     }
 
 
-
-
     /**
      * 从数据声明生成令牌
      *
@@ -83,8 +75,8 @@ public class JwtTokenService {
      */
     public String generateToken(Map<String, Object> claims) {
         return Jwts.builder()
-            .setClaims(claims)
-            .signWith(SignatureAlgorithm.HS512, secret).compact();
+                .setClaims(claims)
+                .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
 
     /**
@@ -95,9 +87,9 @@ public class JwtTokenService {
      */
     public Claims parseToken(String token) {
         return Jwts.parser()
-            .setSigningKey(secret)
-            .parseClaimsJws(token)
-            .getBody();
+                .setSigningKey(secret)
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     /**

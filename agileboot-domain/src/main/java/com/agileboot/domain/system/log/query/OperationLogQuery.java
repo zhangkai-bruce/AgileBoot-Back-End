@@ -22,10 +22,10 @@ public class OperationLogQuery extends AbstractPageQuery<SysOperationLogEntity> 
     @Override
     public QueryWrapper<SysOperationLogEntity> addQueryCondition() {
         QueryWrapper<SysOperationLogEntity> queryWrapper = new QueryWrapper<SysOperationLogEntity>()
-            .like(businessType!=null, "business_type", businessType)
-            .eq(status != null, "status", status)
-            .like(StrUtil.isNotEmpty(username), "username", username)
-            .like(StrUtil.isNotEmpty(requestModule), "request_module", requestModule);
+                .like(businessType != null, "business_type", businessType)
+                .eq(status != null, "status", status)
+                .like(StrUtil.isNotEmpty(username), "username", username)
+                .like(StrUtil.isNotEmpty(requestModule), "request_module", requestModule);
 
         this.timeRangeColumn = "operation_time";
 

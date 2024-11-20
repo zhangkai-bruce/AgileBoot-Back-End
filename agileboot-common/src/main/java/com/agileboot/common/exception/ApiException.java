@@ -3,10 +3,11 @@ package com.agileboot.common.exception;
 import cn.hutool.core.util.StrUtil;
 import com.agileboot.common.exception.error.ErrorCodeInterface;
 import com.agileboot.common.utils.i18n.MessageUtils;
-import java.util.HashMap;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.HashMap;
 
 /**
  * 统一异常类
@@ -42,9 +43,10 @@ public class ApiException extends RuntimeException {
 
     /**
      * 注意  如果是try catch的情况下捕获异常 并转为ApiException的话  一定要填入Throwable e
-     * @param e 捕获到的原始异常
+     *
+     * @param e         捕获到的原始异常
      * @param errorCode 错误码
-     * @param args 错误详细信息参数
+     * @param args      错误详细信息参数
      */
     public ApiException(Throwable e, ErrorCodeInterface errorCode, Object... args) {
         super(e);

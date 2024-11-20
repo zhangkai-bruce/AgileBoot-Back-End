@@ -13,6 +13,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysLoginInfoServiceImpl extends ServiceImpl<SysLoginInfoMapper, SysLoginInfoEntity> implements
-    SysLoginInfoService {
+        SysLoginInfoService {
 
 }

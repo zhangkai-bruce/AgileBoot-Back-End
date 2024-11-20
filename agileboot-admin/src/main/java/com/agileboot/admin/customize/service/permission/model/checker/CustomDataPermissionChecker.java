@@ -1,18 +1,20 @@
 package com.agileboot.admin.customize.service.permission.model.checker;
 
 import cn.hutool.core.collection.CollUtil;
-import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.agileboot.admin.customize.service.permission.model.AbstractDataPermissionChecker;
 import com.agileboot.admin.customize.service.permission.model.DataCondition;
 import com.agileboot.domain.system.dept.db.SysDeptService;
-import java.util.Set;
+import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 /**
  * 数据权限测试接口
+ *
  * @author valarchie
  */
 @EqualsAndHashCode(callSuper = true)

@@ -1,11 +1,8 @@
 package com.agileboot.domain.system.dept.command;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
-import javax.validation.constraints.Size;
 import lombok.Data;
+
+import javax.validation.constraints.*;
 
 /**
  * @author valarchie

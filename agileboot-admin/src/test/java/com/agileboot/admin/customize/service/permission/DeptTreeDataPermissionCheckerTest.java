@@ -1,18 +1,18 @@
 package com.agileboot.admin.customize.service.permission;
 
+import com.agileboot.admin.customize.service.permission.model.DataCondition;
+import com.agileboot.admin.customize.service.permission.model.checker.DeptTreeDataPermissionChecker;
+import com.agileboot.domain.system.dept.db.SysDeptService;
+import com.agileboot.infrastructure.user.web.RoleInfo;
+import com.agileboot.infrastructure.user.web.SystemLoginUser;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import com.agileboot.admin.customize.service.permission.model.checker.DeptTreeDataPermissionChecker;
-import com.agileboot.infrastructure.user.web.SystemLoginUser;
-import com.agileboot.infrastructure.user.web.RoleInfo;
-import com.agileboot.admin.customize.service.permission.model.DataCondition;
-import com.agileboot.domain.system.dept.db.SysDeptService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 class DeptTreeDataPermissionCheckerTest {
 
@@ -85,8 +85,6 @@ class DeptTreeDataPermissionCheckerTest {
 
         assertFalse(check);
     }
-
-
 
 
 }

@@ -31,7 +31,7 @@ public class SysPostServiceImpl extends ServiceImpl<SysPostMapper, SysPostEntity
     public boolean isPostNameDuplicated(Long postId, String postName) {
         QueryWrapper<SysPostEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.ne(postId != null, "post_id", postId)
-            .eq("post_name", postName);
+                .eq("post_name", postName);
         return baseMapper.exists(queryWrapper);
     }
 
@@ -39,7 +39,7 @@ public class SysPostServiceImpl extends ServiceImpl<SysPostMapper, SysPostEntity
     public boolean isPostCodeDuplicated(Long postId, String postCode) {
         QueryWrapper<SysPostEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.ne(postId != null, "post_id", postId)
-            .eq("post_code", postCode);
+                .eq("post_code", postCode);
         return baseMapper.exists(queryWrapper);
     }
 

@@ -1,8 +1,10 @@
 package com.agileboot.admin.controller.system;
 
+import com.agileboot.admin.customize.aop.accessLog.AccessLog;
 import com.agileboot.common.core.base.BaseController;
 import com.agileboot.common.core.dto.ResponseDTO;
 import com.agileboot.common.core.page.PageDTO;
+import com.agileboot.common.enums.common.BusinessTypeEnum;
 import com.agileboot.common.utils.poi.CustomExcelUtil;
 import com.agileboot.domain.system.role.RoleApplicationService;
 import com.agileboot.domain.system.role.command.AddRoleCommand;
@@ -14,24 +16,16 @@ import com.agileboot.domain.system.role.query.AllocatedRoleQuery;
 import com.agileboot.domain.system.role.query.RoleQuery;
 import com.agileboot.domain.system.role.query.UnallocatedRoleQuery;
 import com.agileboot.domain.system.user.dto.UserDTO;
-import com.agileboot.admin.customize.aop.accessLog.AccessLog;
-import com.agileboot.common.enums.common.BusinessTypeEnum;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import java.util.List;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 角色信息
@@ -119,7 +113,7 @@ public class SysRoleController extends BaseController {
     @AccessLog(title = "角色管理", businessType = BusinessTypeEnum.MODIFY)
     @PutMapping("/{roleId}/dataScope")
     public ResponseDTO<Void> dataScope(@PathVariable("roleId") Long roleId,
-        @RequestBody UpdateDataScopeCommand command) {
+                                       @RequestBody UpdateDataScopeCommand command) {
         command.setRoleId(roleId);
 
         roleApplicationService.updateDataScope(command);
@@ -134,7 +128,7 @@ public class SysRoleController extends BaseController {
     @AccessLog(title = "角色管理", businessType = BusinessTypeEnum.MODIFY)
     @PutMapping("/{roleId}/status")
     public ResponseDTO<Void> changeStatus(@PathVariable("roleId") Long roleId,
-        @RequestBody UpdateStatusCommand command) {
+                                          @RequestBody UpdateStatusCommand command) {
         command.setRoleId(roleId);
 
         roleApplicationService.updateStatus(command);
@@ -149,7 +143,7 @@ public class SysRoleController extends BaseController {
     @PreAuthorize("@permission.has('system:role:list')")
     @GetMapping("/{roleId}/allocated/list")
     public ResponseDTO<PageDTO<UserDTO>> allocatedUserList(@PathVariable("roleId") Long roleId,
-        AllocatedRoleQuery query) {
+                                                           AllocatedRoleQuery query) {
         query.setRoleId(roleId);
         PageDTO<UserDTO> page = roleApplicationService.getAllocatedUserList(query);
         return ResponseDTO.ok(page);
@@ -162,7 +156,7 @@ public class SysRoleController extends BaseController {
     @PreAuthorize("@permission.has('system:role:list')")
     @GetMapping("/{roleId}/unallocated/list")
     public ResponseDTO<PageDTO<UserDTO>> unallocatedUserList(@PathVariable("roleId") Long roleId,
-        UnallocatedRoleQuery query) {
+                                                             UnallocatedRoleQuery query) {
         query.setRoleId(roleId);
         PageDTO<UserDTO> page = roleApplicationService.getUnallocatedUserList(query);
         return ResponseDTO.ok(page);
@@ -189,7 +183,7 @@ public class SysRoleController extends BaseController {
     @AccessLog(title = "角色管理", businessType = BusinessTypeEnum.GRANT)
     @PostMapping("/{roleId}/users/{userIds}/grant/bulk")
     public ResponseDTO<Void> addRoleForUserByBulk(@PathVariable("roleId") Long roleId,
-        @PathVariable("userIds") List<Long> userIds) {
+                                                  @PathVariable("userIds") List<Long> userIds) {
         roleApplicationService.addRoleOfUserByBulk(roleId, userIds);
         return ResponseDTO.ok();
     }
